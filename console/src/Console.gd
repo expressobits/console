@@ -25,6 +25,10 @@ signal command_executed(command)
 # @param  String  name
 signal command_not_found(name)
 
+signal write_message(message)
+
+signal clear_message
+
 # @var  History
 var History = preload('Misc/History.gd').new(100):
 	set(value): 
@@ -48,19 +52,6 @@ var is_console_shown = true
 # @var  bool
 var consume_input = true
 
-# @var  Control
-var previous_focus_owner = null
-
-
-### Console nodes
-@onready var _console_box = $ConsoleBox
-@onready var Text = $ConsoleBox/Container/ConsoleText: 
-	set(value): 
-		_set_readonly(value)
-@onready var Line = $ConsoleBox/Container/ConsoleLine:
-	set(value): 
-		_set_readonly(value)
-@onready var _animation_player = $ConsoleBox/AnimationPlayer
 
 
 func _init():
@@ -71,16 +62,6 @@ func _init():
 
 
 func _ready():
-	# Allow selecting console text
-	self.Text.set_selection_enabled(true)
-	# Follow console output (for scrolling)
-	self.Text.set_scroll_follow(true)
-	# React to clicks on console urls
-	self.Text.connect("meta_clicked", self.Line.set_text)
-
-	# Hide console by default
-	self._console_box.hide()
-	self._animation_player.connect("animation_finished", _toggle_animation_finished)
 	self.toggle_console()
 
 	# Console keyboard control
@@ -144,51 +125,27 @@ func remove_command(name):
 # @returns  void
 func write(message):
 	message = str(message)
-	if self.Text:
-		self.Text.append_text(message)
+	emit_signal("write_message", message)
 	print(self._erase_bb_tags_regex.sub(message, '', true))
 
 # @param    String  message
 # @returns  void
 func write_line(message = ''):
 	message = str(message)
-	if self.Text:
-		self.Text.append_text(message + '\n')
+	emit_signal("write_message", message + '\n')
 	print(self._erase_bb_tags_regex.sub(message, '', true))
 
 
 # @returns  void
 func clear():
-	if self.Text:
-		self.Text.clear()
+	emit_signal("clear_message")
 
 
 # @returns  Console
 func toggle_console():
-	# Open the console
-	if !self.is_console_shown:
-		previous_focus_owner = self.Line.get_viewport().gui_get_focus_owner()
-		self._console_box.show()
-		self.Line.clear()
-		self.Line.grab_focus()
-		self._animation_player.play_backwards('fade')
-	else:
-		self.Line.accept_event() # Prevents from DefaultActions.console_toggle key character getting into previous_focus_owner value
-		if is_instance_valid(previous_focus_owner):
-			previous_focus_owner.grab_focus()
-		previous_focus_owner = null
-		self._animation_player.play('fade')
-
 	is_console_shown = !self.is_console_shown
 	emit_signal("toggled", is_console_shown)
-
 	return self
-
-
-# @returns  void
-func _toggle_animation_finished(animation):
-	if !self.is_console_shown:
-		self._console_box.hide()
 
 
 # @returns  void

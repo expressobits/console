@@ -69,7 +69,9 @@ func execute(inArgs = []):
 		i += 1
 
 	# Execute command
-	return self._target.call(args)
+	if self._target != null:
+		return self._target.call(args)
+	return null
 
 
 # @returns  void
