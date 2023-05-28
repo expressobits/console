@@ -41,7 +41,7 @@ _data = {
 "fade": SubResource("1")
 }
 
-[node name="ConsoleBox" type="Panel"]
+[node name="ConsoleUI" type="Panel"]
 self_modulate = Color(1, 1, 1, 0.8)
 anchors_preset = -1
 anchor_right = 1.0
