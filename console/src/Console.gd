@@ -80,7 +80,13 @@ func _ready():
 
 # @param  InputEvent  e
 func _input(e):
+	if not e is InputEventKey:
+		return
 	if e.is_action_pressed(DefaultActions.CONSOLE_TOGGLE):
+		self.toggle_console()
+	if is_console_shown and e.is_action_pressed(DefaultActions.CLOSE_CONSOLE):
+		self.toggle_console()
+	if not is_console_shown and e.is_action_pressed(DefaultActions.OPEN_CONSOLE):
 		self.toggle_console()
 
 

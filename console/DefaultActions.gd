@@ -12,6 +12,29 @@ const console_toggle_props = {
 	]
 }
 
+const CLOSE_CONSOLE = "quentincaffeino_close_console"
+# @const  Dictionary
+const close_console_props = {
+	"name": CLOSE_CONSOLE,
+	"events": [
+		{
+			"keycode": KEY_ESCAPE,
+		}
+	]
+}
+
+
+const OPEN_CONSOLE = "quentincaffeino_open_console"
+# @const  Dictionary
+const open_console_props = {
+	"name": OPEN_CONSOLE,
+	"events": [
+		{
+			"keycode": KEY_ENTER,
+		}
+	]
+}
+
 # @const  String
 const CONSOLE_AUTOCOMPLETE = "quentincaffeino_console_autocomplete"
 # @const  Dictionary
@@ -53,7 +76,9 @@ const ACTIONS = [
 	console_toggle_props,
 	console_autocomplete_props,
 	console_history_up_props,
-	console_history_down_props
+	console_history_down_props,
+	open_console_props,
+	close_console_props
 ]
 
 static func register():
