@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2hehsylfbht3"]
+[gd_scene load_steps=5 format=3 uid="uid://bereu4nxnwbko"]
 
 [ext_resource type="Script" path="res://addons/quentincaffeino/console/console_ui.gd" id="1_ydtap"]
 [ext_resource type="Script" path="res://addons/quentincaffeino/console/src/ConsoleLine.gd" id="2_btmda"]
