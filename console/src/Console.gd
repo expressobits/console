@@ -52,7 +52,7 @@ var is_console_shown = true
 # @var  bool
 var consume_input = true
 
-
+var default_command : String
 
 func _init():
 	self._command_service = CommandService.new(self)

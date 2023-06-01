@@ -15,6 +15,8 @@ const QUOTES = [ '"', "'" ]
 
 const SCREENERS = [ '\\/' ]
 
+const COMMAND_PREFIX = '/'
+
 # @var  String|null
 var _tmp_user_entered_command
 
@@ -98,11 +100,17 @@ func set_text(text, move_caret_to_end = true):
 
 # @param    String  input
 # @returns  void
-func execute(input):
-	# Console.write_line('[color=#999999]$[/color] ' + input)
 
-	# @var  Dictionary[]
-	var parsedCommands = _parse_commands(input)
+
+func execute(input : String):
+	if not input.begins_with(COMMAND_PREFIX):
+		if Console.default_command.length():
+			input = COMMAND_PREFIX + Console.default_command +" " + input
+		else:
+			return
+	input = input.right(-1)
+#	Console.write_line('[color=#999999]/[/color] ' + input)
+	var parsedCommands : Array = _parse_commands(input)
 
 	for parsedCommand in parsedCommands:
 		print(parsedCommand)
