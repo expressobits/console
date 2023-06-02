@@ -73,6 +73,7 @@ func _version():
 
 # @returns  void
 func _list_commands():
+	Console.write_line('[color=#ff66ff]=== ALL COMMANDS ===[/color]')
 	for command in self._console._command_service.values():
 		var name = command.get_name()
 		self._console.write_line('[color=#ffff66][url=%s]%s[/url][/color]' % [ name, name ])

@@ -68,13 +68,17 @@ func _input(e):
 	if Input.is_action_just_pressed(DefaultActions.CONSOLE_AUTOCOMPLETE):
 		if self._autocomplete_triggered_timer and self._autocomplete_triggered_timer.get_time_left() > 0:
 			self._autocomplete_triggered_timer = null
-			var commands = Console.get_command_service().find(self.text)
+			var actual_text = self.text
+			if actual_text.begins_with(COMMAND_PREFIX):
+				actual_text = actual_text.right(-1)
+			var commands = Console.get_command_service().find(actual_text)
 			if commands.length == 1:
-				self.set_text(commands.get_by_index(0).get_name())
-			else:
+				self.set_text(COMMAND_PREFIX + commands.get_by_index(0).get_name())
+			elif commands.length > 1:
+				Console.write_line('[color=#ffff33]=== POSSIBLE COMMANDS ===[/color]')
 				for command in commands.get_value_iterator():
 					var name = command.get_name()
-					Console.write_line('[color=#ffff66][url=%s]%s[/url][/color]' % [ name, name ])
+					Console.write_line(COMMAND_PREFIX + '[color=#ffff66][url=%s]%s[/url][/color]' % [ name, name ])
 		else:
 			self._autocomplete_triggered_timer = get_tree().create_timer(1.0, true)
 			var autocompleted_command = Console.get_command_service().autocomplete(self.text)
@@ -102,7 +106,8 @@ func set_text(text, move_caret_to_end = true):
 # @returns  void
 
 
-func execute(input : String):
+func execute(raw_input : String):
+	var input : String = raw_input
 	if Console.use_prefix_for_commands:
 		if not input.begins_with(COMMAND_PREFIX):
 			if Console.default_command.length():
@@ -111,7 +116,7 @@ func execute(input : String):
 				return
 		input = input.right(-1)
 	
-#	Console.write_line('[color=#999999]/[/color] ' + input)
+	Console.write_line('[color=#999999]/[/color] ' + input)
 	var parsedCommands : Array = _parse_commands(input)
 
 	for parsedCommand in parsedCommands:
@@ -129,7 +134,7 @@ func execute(input : String):
 				Console.write_line('Command `' + parsedCommand.name + '` not found.')
 				Console.emit_signal("command_not_found", parsedCommand.name)
 
-	Console.History.push(input)
+	Console.History.push(raw_input)
 	self.clear()
 
 

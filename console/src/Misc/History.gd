@@ -10,6 +10,8 @@ func _init(maxLength):
 # @returns  History
 func print_all():
 	var i = 1
+	if length > 1:
+		Console.write_line('[color=#ff66ff]=== HISTORY ===[/color]')
 	for command in self.get_value_iterator():
 		Console.write_line(\
 			'[b]' + str(i) + '.[/b] [color=#ffff66][url=' + \
