@@ -52,6 +52,8 @@ var is_console_shown = true
 # @var  bool
 var consume_input = true
 
+var use_prefix_for_commands := true
+
 var default_command : String
 
 func _init():
