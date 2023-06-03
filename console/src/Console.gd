@@ -56,6 +56,9 @@ var use_prefix_for_commands := true
 
 var default_command : String
 
+var print_command_in_console := false
+
+
 func _init():
 	self._command_service = CommandService.new(self)
 	# Used to clear text from bb tags before printing to engine output

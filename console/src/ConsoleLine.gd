@@ -116,7 +116,9 @@ func execute(raw_input : String):
 				return
 		input = input.right(-1)
 	
-	Console.write_line('[color=#999999]/[/color] ' + input)
+	if Console.print_command_in_console:
+		Console.write_line('[color=#999999]/[/color] ' + input)
+		
 	var parsedCommands : Array = _parse_commands(input)
 
 	for parsedCommand in parsedCommands:
