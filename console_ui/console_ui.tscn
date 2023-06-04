@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bereu4nxnwbko"]
+[gd_scene load_steps=6 format=3 uid="uid://bereu4nxnwbko"]
 
 [ext_resource type="Script" path="res://addons/quentincaffeino/console_ui/console_ui.gd" id="1_ydtap"]
 [ext_resource type="Script" path="res://addons/quentincaffeino/console/src/ConsoleLine.gd" id="2_btmda"]
+[ext_resource type="Script" path="res://addons/quentincaffeino/console_ui/console_logs_ui.gd" id="2_la1sp"]
 
 [sub_resource type="Animation" id="1"]
 length = 0.25
@@ -69,6 +70,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_next = NodePath("../LineEdit")
 focus_previous = NodePath("../LineEdit")
+script = ExtResource("2_la1sp")
 
 [node name="ConsoleLine" type="LineEdit" parent="Container"]
 layout_mode = 2

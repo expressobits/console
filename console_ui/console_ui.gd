@@ -1,10 +1,7 @@
 extends Panel
 class_name ConsoleUI
 
-
-@onready var Text = $Container/ConsoleText: 
-	set(value): 
-		_set_readonly(value)
+@onready var Text : ConsoleLogsUI = $Container/ConsoleText
 @onready var Line = $Container/ConsoleLine:
 	set(value): 
 		_set_readonly(value)
@@ -18,30 +15,14 @@ func _set_readonly(value):
 	Console.Log.warn('qc/console: _set_readonly: Attempted to set a protected variable, ignoring.')
 
 func _ready():
-	# Allow selecting console text
-	self.Text.set_selection_enabled(true)
-	# Follow console output (for scrolling)
-	self.Text.set_scroll_follow(true)
-	
 	# React to clicks on console urls
-	self.Text.connect("meta_clicked", self.Line.set_text)
+#	self.Text.connect("meta_clicked", self.Line.set_text)
 	
 	# Hide console by default
 	hide()
 	_animation_player.connect("animation_finished", _toggle_animation_finished)
-	
-	Console.write_message.connect(_on_console_write_message.bind())
-	Console.clear_message.connect(_on_console_clear_message.bind())
 	Console.toggled.connect(_on_console_toggle_console.bind())
 	
-func _on_console_write_message(message):
-	if self.Text:
-		self.Text.append_text(message)
-
-
-func _on_console_clear_message():
-	if self.Text:
-		self.Text.clear()
 
 func _on_console_toggle_console(is_console_shown : bool):
 	if is_console_shown:
