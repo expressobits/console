@@ -137,14 +137,14 @@ func remove_command(name):
 func write(message):
 	message = str(message)
 	emit_signal("write_message", message)
-	print(self._erase_bb_tags_regex.sub(message, '', true))
+	# print(self._erase_bb_tags_regex.sub(message, '', true))
 
 # @param    String  message
 # @returns  void
 func write_line(message = ''):
 	message = str(message)
 	emit_signal("write_message", message + '\n')
-	print(self._erase_bb_tags_regex.sub(message, '', true))
+	# print(self._erase_bb_tags_regex.sub(message, '', true))
 
 
 # @returns  void
