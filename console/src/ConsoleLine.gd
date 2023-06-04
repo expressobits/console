@@ -107,17 +107,19 @@ func set_text(text, move_caret_to_end = true):
 
 
 func execute(raw_input : String):
+	if raw_input.is_empty():
+		return
+	
 	var input : String = raw_input
 	if Console.use_prefix_for_commands:
 		if not input.begins_with(COMMAND_PREFIX):
-			if Console.default_command.length():
+			if not Console.default_command.is_empty() and Console.default_command.length():
 				input = COMMAND_PREFIX + Console.default_command + COMMAND_PARTS_SEPARATOR + input
 			else:
+				self.clear()
 				return
 		input = input.right(-1)
 
-	
-	
 	if Console.print_command_in_console:
 		Console.write_line('[color=#999999]/[/color] ' + input)
 		
