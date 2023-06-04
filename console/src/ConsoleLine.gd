@@ -111,10 +111,12 @@ func execute(raw_input : String):
 	if Console.use_prefix_for_commands:
 		if not input.begins_with(COMMAND_PREFIX):
 			if Console.default_command.length():
-				input = COMMAND_PREFIX + Console.default_command +" " + input
+				input = COMMAND_PREFIX + Console.default_command + COMMAND_PARTS_SEPARATOR + input
 			else:
 				return
 		input = input.right(-1)
+
+	
 	
 	if Console.print_command_in_console:
 		Console.write_line('[color=#999999]/[/color] ' + input)
@@ -122,14 +124,17 @@ func execute(raw_input : String):
 	var parsedCommands : Array = _parse_commands(input)
 
 	for parsedCommand in parsedCommands:
-		print(parsedCommand)
-		print(parsedCommand.name.length())
 		if parsedCommand.name.length():
 			# @var  Command/Command|null
 			var command = Console.get_command(parsedCommand.name)
 
 			if command:
 				Console.Log.debug('Executing `' + parsedCommand.command + '`.')
+				if command._arg_type == command.ArgType.STRING:
+					var arg_string : String
+					for i in parsedCommand.arguments.size():
+						arg_string += parsedCommand.arguments[i] + COMMAND_PARTS_SEPARATOR
+					parsedCommand.arguments = [ arg_string ]
 				command.execute(parsedCommand.arguments)
 				Console.emit_signal("command_executed", command)
 			else:
@@ -158,7 +163,7 @@ static func _parse_commands(input):
 # @static
 # @param    String  rawCommand
 # @returns  Dictionary
-static func _parse_command(rawCommand):
+static func _parse_command(rawCommand, string_formatted_args := true):
 	var name = ''
 	var arguments : Array[String]
 

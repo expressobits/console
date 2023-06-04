@@ -1,8 +1,10 @@
 
 extends RefCounted
+class_name Command
 
 const Argument = preload('../Argument/Argument.gd')
 
+enum ArgType { NORMAL = 0, STRING = 1}
 
 # @var  String
 var _name
@@ -16,16 +18,18 @@ var _arguments
 # @var  String|null
 var _description
 
+var _arg_type : ArgType = ArgType.NORMAL
 
 # @param  String       name
 # @param  Callback     target
 # @param  Argument[]   arguments
 # @param  String|null  description
-func _init(name, target, arguments = [], description = null):
+func _init(name, target, arguments = [], description = null, arg_type = ArgType.NORMAL):
 	self._name = name
 	self._target = target
 	self._arguments = arguments
 	self._description = description
+	self._arg_type = arg_type
 
 
 # @returns  String
@@ -55,7 +59,9 @@ func execute(inArgs = []):
 	var argAssig
 
 	var i = 0
+
 	while i < self._arguments.size() and i < inArgs.size():
+
 		argAssig = self._arguments[i].set_value(inArgs[i])
 
 		if argAssig == FAILED:

@@ -6,7 +6,6 @@ const Callback = preload('res://addons/quentincaffeino/callback/src/Callback.gd'
 const ArgumentFactory = preload('../Argument/ArgumentFactory.gd')
 const Command = preload('Command.gd')
 
-
 # @var  Console
 var _console
 
@@ -24,6 +23,8 @@ var _arguments
 
 # @var  String|null
 var _description
+
+var _arg_type : Command.ArgType = Command.ArgType.NORMAL
 
 
 # @param  Console         console
@@ -88,8 +89,13 @@ func set_description(description = null):
 	return self
 
 
+func set_arg_type(argType):
+	self._arg_type = argType
+	return self
+
+
 # @returns  void
 func register():
-	var command = Command.new(self._name, self._target, self._arguments, self._description)
+	var command = Command.new(self._name, self._target, self._arguments, self._description, self._arg_type)
 	if not self._command_service.set(self._name, command):
 		self._console.Log.error("CommandBuilder::register: Failed to create [b]`%s`[/b] command. Command already exists." % self._name)
