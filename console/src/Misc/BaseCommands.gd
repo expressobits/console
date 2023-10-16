@@ -40,11 +40,6 @@ func _init(console):
 		.set_description('Shows engine version.')\
 		.register()
 
-	self._console.add_command('fps_max', Engine, 'set_target_fps')\
-		.set_description('The maximal framerate at which the application can run.')\
-		.add_argument('fps', self._console.IntRangeType.new(10, 1000))\
-		.register()
-
 
 # Display help message or display description for the command.
 # @param    String|null  command_name
