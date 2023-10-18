@@ -7,7 +7,7 @@ Wrapper class to allow iterating through class properties.
 ### 1. Iterating through regular dictionary:
 
 ```gdscript
-const Iterator = preload('res://addons/quentincaffeino-iterator/src/Iterator.gd')
+const Iterator = preload('res://addons/console-iterator/src/Iterator.gd')
 
 
 # @var  Dictionary

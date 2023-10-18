@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://fqtnj6fnt4ru"
-path="res://.godot/imported/SourceCodePro-BoldIt.otf-3a5a47a616bf18a9557e0966e6f60a78.fontdata"
+path="res://.godot/imported/SourceCodePro-BoldIt.otf-82360ea51f1e2369080667fb50b03ea6.fontdata"
 
 [deps]
 
-source_file="res://addons/quentincaffeino/console/assets/fonts/source-code-pro/OTF/SourceCodePro-BoldIt.otf"
-dest_files=["res://.godot/imported/SourceCodePro-BoldIt.otf-3a5a47a616bf18a9557e0966e6f60a78.fontdata"]
+source_file="res://addons/console/console/assets/fonts/source-code-pro/OTF/SourceCodePro-BoldIt.otf"
+dest_files=["res://.godot/imported/SourceCodePro-BoldIt.otf-82360ea51f1e2369080667fb50b03ea6.fontdata"]
 
 [params]
 

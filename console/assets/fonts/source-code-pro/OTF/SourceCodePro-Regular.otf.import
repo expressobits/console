@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://d4c6e318jfdab"
-path="res://.godot/imported/SourceCodePro-Regular.otf-8ffc5147b0bf2df011a307140345d68d.fontdata"
+path="res://.godot/imported/SourceCodePro-Regular.otf-2fe55c7f24d2f61a2f0adb58f03cc9ac.fontdata"
 
 [deps]
 
-source_file="res://addons/quentincaffeino/console/assets/fonts/source-code-pro/OTF/SourceCodePro-Regular.otf"
-dest_files=["res://.godot/imported/SourceCodePro-Regular.otf-8ffc5147b0bf2df011a307140345d68d.fontdata"]
+source_file="res://addons/console/console/assets/fonts/source-code-pro/OTF/SourceCodePro-Regular.otf"
+dest_files=["res://.godot/imported/SourceCodePro-Regular.otf-2fe55c7f24d2f61a2f0adb58f03cc9ac.fontdata"]
 
 [params]
 

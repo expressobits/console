@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bcajvrxkemhcg"
-path="res://.godot/imported/SourceCodePro-BlackIt.otf-c0105a98f9ae6e489a01afbfbed24040.fontdata"
+path="res://.godot/imported/SourceCodePro-BlackIt.otf-84b272bd9a4abf933d19249fcd823aa5.fontdata"
 
 [deps]
 
-source_file="res://addons/quentincaffeino/console/assets/fonts/source-code-pro/OTF/SourceCodePro-BlackIt.otf"
-dest_files=["res://.godot/imported/SourceCodePro-BlackIt.otf-c0105a98f9ae6e489a01afbfbed24040.fontdata"]
+source_file="res://addons/console/console/assets/fonts/source-code-pro/OTF/SourceCodePro-BlackIt.otf"
+dest_files=["res://.godot/imported/SourceCodePro-BlackIt.otf-84b272bd9a4abf933d19249fcd823aa5.fontdata"]
 
 [params]
 

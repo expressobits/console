@@ -1,5 +1,5 @@
 
-extends 'res://addons/quentincaffeino/console/src/Type/BaseType.gd'
+extends 'res://addons/console/console/src/Type/BaseType.gd'
 
 
 enum MODE \

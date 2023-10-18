@@ -2,7 +2,7 @@
 extends LineEdit
 
 const DefaultActions = preload('../DefaultActions.gd')
-const RegExLib = preload('res://addons/quentincaffeino/regexlib/src/RegExLib.gd')
+const RegExLib = preload('res://addons/console/regexlib/src/RegExLib.gd')
 
 
 const COMMANDS_SEPARATOR = ';'

@@ -1,8 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bereu4nxnwbko"]
 
-[ext_resource type="Script" path="res://addons/quentincaffeino/console_ui/console_ui.gd" id="1_ydtap"]
-[ext_resource type="Script" path="res://addons/quentincaffeino/console/src/ConsoleLine.gd" id="2_btmda"]
-[ext_resource type="Script" path="res://addons/quentincaffeino/console_ui/console_logs_ui.gd" id="2_la1sp"]
+[ext_resource type="Script" path="res://addons/console/console_ui/console_ui.gd" id="1_ydtap"]
+[ext_resource type="Script" path="res://addons/console/console/src/ConsoleLine.gd" id="2_btmda"]
+[ext_resource type="Script" path="res://addons/console/console_ui/console_logs_ui.gd" id="2_la1sp"]
+
 
 [sub_resource type="Animation" id="1"]
 length = 0.25

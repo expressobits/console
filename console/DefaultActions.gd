@@ -1,6 +1,6 @@
 
 # @const  String
-const CONSOLE_TOGGLE = "quentincaffeino_console_toggle"
+const CONSOLE_TOGGLE = "console_toggle"
 # @const  Dictionary
 const console_toggle_props = {
 	"name": CONSOLE_TOGGLE,
@@ -12,7 +12,7 @@ const console_toggle_props = {
 	]
 }
 
-const CLOSE_CONSOLE = "quentincaffeino_close_console"
+const CLOSE_CONSOLE = "close_console"
 # @const  Dictionary
 const close_console_props = {
 	"name": CLOSE_CONSOLE,
@@ -24,7 +24,7 @@ const close_console_props = {
 }
 
 
-const OPEN_CONSOLE = "quentincaffeino_open_console"
+const OPEN_CONSOLE = "open_console"
 # @const  Dictionary
 const open_console_props = {
 	"name": OPEN_CONSOLE,
@@ -36,7 +36,7 @@ const open_console_props = {
 }
 
 # @const  String
-const CONSOLE_AUTOCOMPLETE = "quentincaffeino_console_autocomplete"
+const CONSOLE_AUTOCOMPLETE = "console_autocomplete"
 # @const  Dictionary
 const console_autocomplete_props = {
 	"name": CONSOLE_AUTOCOMPLETE,
@@ -48,7 +48,7 @@ const console_autocomplete_props = {
 }
 
 # @const  String
-const CONSOLE_HISTORY_UP = "quentincaffeino_console_history_up"
+const CONSOLE_HISTORY_UP = "console_history_up"
 # @const  Dictionary
 const console_history_up_props = {
 	"name": CONSOLE_HISTORY_UP,
@@ -60,7 +60,7 @@ const console_history_up_props = {
 }
 
 # @const  String
-const CONSOLE_HISTORY_DOWN = "quentincaffeino_console_history_down"
+const CONSOLE_HISTORY_DOWN = "console_history_down"
 # @const  Dictionary
 const console_history_down_props = {
 	"name": CONSOLE_HISTORY_DOWN,

@@ -1,9 +1,10 @@
 [gd_resource type="Theme" load_steps=5 format=3 uid="uid://cki0wfljgijbs"]
 
-[ext_resource type="FontFile" uid="uid://c2pljt7fxginb" path="res://addons/quentincaffeino/console/assets/fonts/source-code-pro/OTF/SourceCodePro-Bold.otf" id="1_71gnp"]
-[ext_resource type="FontFile" uid="uid://fqtnj6fnt4ru" path="res://addons/quentincaffeino/console/assets/fonts/source-code-pro/OTF/SourceCodePro-BoldIt.otf" id="2_knrt6"]
-[ext_resource type="FontFile" uid="uid://du6rudkx87guc" path="res://addons/quentincaffeino/console/assets/fonts/source-code-pro/OTF/SourceCodePro-It.otf" id="3_s1bu6"]
-[ext_resource type="FontFile" uid="uid://d4c6e318jfdab" path="res://addons/quentincaffeino/console/assets/fonts/source-code-pro/OTF/SourceCodePro-Regular.otf" id="4_tpqf3"]
+[ext_resource type="FontFile" uid="uid://c2pljt7fxginb" path="res://addons/console/console/assets/fonts/source-code-pro/OTF/SourceCodePro-Bold.otf" id="1_71gnp"]
+[ext_resource type="FontFile" uid="uid://fqtnj6fnt4ru" path="res://addons/console/console/assets/fonts/source-code-pro/OTF/SourceCodePro-BoldIt.otf" id="2_knrt6"]
+[ext_resource type="FontFile" uid="uid://du6rudkx87guc" path="res://addons/console/console/assets/fonts/source-code-pro/OTF/SourceCodePro-It.otf" id="3_s1bu6"]
+[ext_resource type="FontFile" uid="uid://d4c6e318jfdab" path="res://addons/console/console/assets/fonts/source-code-pro/OTF/SourceCodePro-Regular.otf" id="4_tpqf3"]
+
 
 [resource]
 default_font = ExtResource("4_tpqf3")
