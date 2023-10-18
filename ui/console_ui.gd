@@ -10,7 +10,7 @@ class_name ConsoleUI
 var previous_focus_owner : Control = null
 
 func _set_readonly(value):
-	Console.Log.warn('qc/console: _set_readonly: Attempted to set a protected variable, ignoring.')
+	Console.log.warn('qc/console: _set_readonly: Attempted to set a protected variable, ignoring.')
 
 func _ready():
 	# React to clicks on console urls

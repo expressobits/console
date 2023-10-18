@@ -24,9 +24,9 @@ class_name ConsoleNativeLogs
 extends Node
 #Monitor built-in logs
 
-signal error_msg_received(msg:String)
-signal warning_msg_received(msg:String)
-signal info_msg_received(msg:String)
+signal error_msg_received(msg : String)
+signal warning_msg_received(msg : String)
+signal info_msg_received(msg : String)
 
 const UPDATE_INTERVAL := 0.1
 const ERROR_MSG_PREFIX := "USER ERROR: "
@@ -57,8 +57,8 @@ func _read_data():
 		if new_line.begins_with(IGNORE_PREFIX):
 			continue
 		if new_line.begins_with(ERROR_MSG_PREFIX):
-			Console.write_line("[color=#ff6666]"+new_line.trim_prefix(ERROR_MSG_PREFIX)+"[/color]")
+			Console.log.error(new_line.trim_prefix(ERROR_MSG_PREFIX))
 		elif new_line.begins_with(WARNING_MSG_PREFIX):
-			Console.write_line(new_line.trim_prefix(WARNING_MSG_PREFIX))
+			Console.log.warn(new_line.trim_prefix(WARNING_MSG_PREFIX))
 		else:
-			Console.write_line(new_line)
+			Console.log.debug(new_line)

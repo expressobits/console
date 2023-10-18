@@ -12,17 +12,15 @@ signal clear_message
 signal raw_input(raw_input : String)
 
 @export var history : ConsoleHistory
-var Log : Logger = Logger.new():
-	set(value): 
-		_set_readonly(value)
+@export var log : Logger
 
 var _command_service
 var _erase_bb_tags_regex : RegEx
 var is_console_shown : bool = true
-var consume_input : bool = true
-var use_prefix_for_commands : bool = true
-var default_command : String
-var print_command_in_console : bool = false
+@export var consume_input : bool = true
+@export var use_prefix_for_commands : bool = true
+@export var default_command : String
+@export var print_command_in_console : bool = false
 
 
 func _init():
@@ -112,4 +110,4 @@ func toggle_console():
 
 
 func _set_readonly(value):
-	Log.warn('qc/console: _set_readonly: Attempted to set a protected variable, ignoring.')
+	log.warn('qc/console: _set_readonly: Attempted to set a protected variable, ignoring.')

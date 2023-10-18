@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/console/ui/console_ui.gd" id="1_ydtap"]
 [ext_resource type="Script" path="res://addons/console/ui/console_logs_ui.gd" id="2_la1sp"]
-[ext_resource type="Script" path="res://addons/console/console/core/console_line.gd" id="3_4f85w"]
+[ext_resource type="Script" path="res://addons/console/ui/console_line.gd" id="3_jpp4i"]
 
 [sub_resource type="Animation" id="1"]
 length = 0.25
@@ -77,4 +77,4 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_next = NodePath(".")
 focus_previous = NodePath(".")
-script = ExtResource("3_4f85w")
+script = ExtResource("3_jpp4i")

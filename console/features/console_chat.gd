@@ -17,14 +17,13 @@ func _ready():
 
 
 func start():
-	Console.default_command = "chat"
 	Console.add_command('chat', self, 'send')\
 		.set_description('Send chat message')\
 		.add_argument('message', TYPE_STRING)\
 		.set_arg_type(ConsoleCommand.ArgType.STRING)\
 		.register()
 	if debug_messages:
-		Console.write_line("[color=#ffff66][DEBUG][/color] Start chat service...")
+		Console.log.info("Start chat service...")
 	is_active = true
 
 
@@ -32,7 +31,7 @@ func stop():
 	Console.default_command = ''
 	Console.remove_command('chat')
 	if debug_messages:
-		Console.write_line("[color=#ffff66][DEBUG][/color] Stop chat service...")
+		Console.log.info("Stop chat service...")
 	is_active = false
 
 

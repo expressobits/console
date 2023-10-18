@@ -107,7 +107,7 @@ func execute(raw_input : String):
 			var command = Console.get_command(parsedCommand.name)
 
 			if command:
-				Console.Log.debug('Executing `' + parsedCommand.command + '`.')
+				Console.log.debug('Executing `' + parsedCommand.command + '`.')
 				if command._arg_type == command.ArgType.STRING:
 					var arg_string : String
 					for i in parsedCommand.arguments.size():
@@ -181,4 +181,4 @@ static func _parse_command(raw_command : String, string_formatted_args : bool = 
 
 
 func _set_readonly(value):
-	Console.Log.warn('QC/Console/ConsoleLine: _set_readonly: Attempted to set a protected variable, ignoring.')
+	Console.log.warn('QC/Console/ConsoleLine: _set_readonly: Attempted to set a protected variable, ignoring.')

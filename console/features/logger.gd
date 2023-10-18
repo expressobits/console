@@ -1,6 +1,5 @@
 class_name Logger
-extends RefCounted
-
+extends Node
 
 enum LogType \
 {
@@ -10,17 +9,15 @@ enum LogType \
 	ERROR,
 	NONE
 }
-
-var logLevel : LogType = LogType.WARNING
-
+@export var log_level : LogType = LogType.WARNING
 
 func set_log_level(in_log_level : LogType) -> Logger:
-	logLevel = in_log_level
+	log_level = in_log_level
 	return self
 
 # Example usage:
 # ```gdscript
-# Console.Log.log("Hello world!", Console.Log.TYPE.INFO)
+# Console.log.log("Hello world!", Console.log.TYPE.INFO)
 # ```
 func log(message : String, type = LogType.INFO) -> Logger:
 	match type:
@@ -32,24 +29,24 @@ func log(message : String, type = LogType.INFO) -> Logger:
 
 
 func debug(message : String) -> Logger:
-	if logLevel <= LogType.DEBUG:
+	if log_level <= LogType.DEBUG:
 		Console.write_line('[color=green][DEBUG][/color] ' + str(message))
 	return self
 
 
 func info(message : String) -> Logger:
-	if logLevel <= LogType.INFO:
-		Console.write_line('[color=blue][INFO][/color] ' + str(message))
+	if log_level <= LogType.INFO:
+		Console.write_line('[color=cyan][INFO][/color] ' + str(message))
 	return self
 
 
 func warn(message : String) -> Logger:
-	if logLevel <= LogType.WARNING:
+	if log_level <= LogType.WARNING:
 		Console.write_line('[color=yellow][WARNING][/color] ' + str(message))
 	return self
 
 
 func error(message : String) -> Logger:
-	if logLevel <= LogType.ERROR:
+	if log_level <= LogType.ERROR:
 		Console.write_line('[color=red][ERROR][/color] ' + str(message))
 	return self

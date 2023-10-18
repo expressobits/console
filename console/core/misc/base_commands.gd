@@ -42,7 +42,7 @@ func _help(command_name = null):
 		if command:
 			command.describe()
 		else:
-			self._console.Log.warn('No help for `' + command_name + '` command were found.')
+			self._console.log.warn('No help for `' + command_name + '` command were found.')
 
 	else:
 		self._console.write_line(\
@@ -65,5 +65,5 @@ func _list_commands():
 
 # Quitting application.
 func _quit():
-	self._console.Log.warn('Quitting application...')
+	self._console.log.warn('Quitting application...')
 	self._console.get_tree().quit()

@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw1lfc8rifpwl"]
+[gd_scene load_steps=6 format=3 uid="uid://bw1lfc8rifpwl"]
 
 [ext_resource type="Script" path="res://addons/console/console/core/console.gd" id="1_p6bsx"]
 [ext_resource type="Script" path="res://addons/console/console/features/console_native_logs.gd" id="2_lchu0"]
-[ext_resource type="Script" path="res://addons/console/console/core/misc/console_history.gd" id="3_3d00d"]
+[ext_resource type="Script" path="res://addons/console/console/features/console_history.gd" id="3_v3cbe"]
 [ext_resource type="Script" path="res://addons/console/console/features/console_chat.gd" id="4_vyo2c"]
+[ext_resource type="Script" path="res://addons/console/console/features/logger.gd" id="5_6c67j"]
 
-[node name="Console" type="Node" node_paths=PackedStringArray("history")]
+[node name="Console" type="Node" node_paths=PackedStringArray("history", "log")]
 script = ExtResource("1_p6bsx")
 history = NodePath("ConsoleHistory")
+log = NodePath("Logger")
+
+[node name="Logger" type="Node" parent="."]
+script = ExtResource("5_6c67j")
 
 [node name="Godot Logs" type="Node" parent="." node_paths=PackedStringArray("timer")]
 script = ExtResource("2_lchu0")
@@ -16,7 +21,7 @@ timer = NodePath("Timer")
 [node name="Timer" type="Timer" parent="Godot Logs"]
 
 [node name="ConsoleHistory" type="Node" parent="."]
-script = ExtResource("3_3d00d")
+script = ExtResource("3_v3cbe")
 
 [node name="ConsoleChat" type="Node" parent="."]
 script = ExtResource("4_vyo2c")

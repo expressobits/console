@@ -44,7 +44,7 @@ func execute(in_args : Array = []):
 		arg_assig = self._arguments[i].set_value(in_args[i])
 
 		if arg_assig == FAILED:
-			Console.Log.warn(\
+			Console.log.warn(\
 				'Expected %s %s as argument.' % [self._arguments[i].get_type().to_string(), str(i + 1)])
 			return
 		elif arg_assig == ConsoleArgument.Assignment.CANCELED:

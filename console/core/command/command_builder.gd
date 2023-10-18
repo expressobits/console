@@ -31,7 +31,7 @@ func _initialize_target_callback(target, name = null):
 	var callback = CallbackBuilder.new(target).set_name(name).build()
 
 	if not callback:
-		self._console.Log.error(\
+		self._console.log.error(\
 			'CommandBuilder: Failed to create [b]`%s`[/b] command. Failed to create callback to target with method [b]`%s`[/b].' %
 			[ self._name, name ])
 
@@ -44,10 +44,10 @@ func add_argument(name : String, type = null, description = null) -> CommandBuil
 	var error = argument_result.get_error()
 	if error:
 		if error.get_code() != ArgumentFactory.FALLBACK_ERROR:
-			self._console.Log.error(error.get_message())
+			self._console.log.error(error.get_message())
 			return self
 		else:
-			self._console.Log.warn(\
+			self._console.log.warn(\
 				"CommandBuilder: add_argument for command `%s` for argument `%s` failed with: %s" % [self._name, name, error.get_message()])
 
 	var argument = argument_result.get_value()
@@ -68,4 +68,4 @@ func set_arg_type(arg_type : ConsoleCommand.ArgType):
 func register():
 	var command = ConsoleCommand.new(self._name, self._target, self._arguments, self._description, self._arg_type)
 	if not self._command_service.set(self._name, command):
-		self._console.Log.error("CommandBuilder::register: Failed to create [b]`%s`[/b] command. Command already exists." % self._name)
+		self._console.log.error("CommandBuilder::register: Failed to create [b]`%s`[/b] command. Command already exists." % self._name)
