@@ -2,14 +2,14 @@ class_name ConsoleTypeFactory
 
 
 const TYPE_LIST = [
-	preload('AnyType.gd'),
-	preload('BoolType.gd'),
-	preload('IntType.gd'),
-	preload('FloatType.gd'),
-	preload('StringType.gd'),
-	preload('Vector2Type.gd'),
+	preload('console_variant.gd'),
+	preload('bool_console_type.gd'),
+	preload('int_console_type.gd'),
+	preload('float_console_type.gd'),
+	preload('string_console_type.gd'),
+	preload('vector2_console_type.gd'),
 	null,  # Rect2
-	preload('Vector3Type.gd'),
+	preload('vector3_console_type.gd'),
 ]
 
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://wufx2ippa0vr"]
 
-[ext_resource type="Script" path="res://addons/console/console/src/Console.gd" id="1"]
+[ext_resource type="Script" path="res://addons/console/console/src/console.gd" id="1"]
 [ext_resource type="Script" path="res://addons/console/extensions/godot_logs.gd" id="2_srcfb"]
 
 [node name="Console" type="Node"]

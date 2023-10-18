@@ -1,8 +1,6 @@
 class_name Iterator
 extends RefCounted
 
-const CallbackBuilder = preload("res://addons/console/callback/src/CallbackBuilder.gd")
-
 
 # @var  Callback
 var _object_get_value_cb

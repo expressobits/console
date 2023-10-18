@@ -3,9 +3,9 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "test": "pnpm -r test"
+	"test": "pnpm -r test"
   },
   "devDependencies": {
-    "gut": "npm:@sometimes_youwin/gut@7.3.0"
+	"gut": "npm:@sometimes_youwin/gut@7.3.0"
   }
 }
