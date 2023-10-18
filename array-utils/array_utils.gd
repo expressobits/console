@@ -1,9 +1,7 @@
 extends RefCounted
 class_name ArrayUtils
 
-# @param    Variant  value
-# @returns  Variant[]
-static func to_array(value):
+static func to_array(value) -> Array:
 	if is_array(value):
 		return value
 
@@ -13,15 +11,11 @@ static func to_array(value):
 	return []
 
 
-# @param    Variant  value
-# @returns  bool
-static func is_array(value):
+static func is_array(value) -> bool:
 	return typeof(value) >= TYPE_ARRAY
 
 
-# @param    Variant  value
-# @returns  Dictionary
-static func to_dict(value):
+static func to_dict(value) -> Dictionary:
 	if typeof(value) == TYPE_DICTIONARY:
 		return value
 
@@ -37,11 +31,7 @@ static func to_dict(value):
 	return d
 
 
-# @param    Variant[]  in_array
-# @param    Variant[]  out_array
-# @param    int        depth
-# @returns  Variant[]
-static func flatten(in_array, out_array = [], depth = -1):
+static func flatten(in_array : Array, out_array : Array = [], depth : int = -1) -> Array:
 	assert(typeof(in_array) == TYPE_ARRAY, "qc/array-utils: Utils: in_array must be an array")
 
 	for i in in_array.size():

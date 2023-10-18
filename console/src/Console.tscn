@@ -1,13 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://wufx2ippa0vr"]
+[gd_scene load_steps=4 format=3 uid="uid://wufx2ippa0vr"]
 
 [ext_resource type="Script" path="res://addons/console/console/src/console.gd" id="1"]
 [ext_resource type="Script" path="res://addons/console/extensions/godot_logs.gd" id="2_srcfb"]
+[ext_resource type="Script" path="res://addons/console/console/src/misc/console_history.gd" id="3_fg4ds"]
 
-[node name="Console" type="Node"]
+[node name="Console" type="Node" node_paths=PackedStringArray("history")]
 script = ExtResource("1")
+history = NodePath("ConsoleHistory")
 
 [node name="Godot Logs" type="Node" parent="." node_paths=PackedStringArray("timer")]
 script = ExtResource("2_srcfb")
 timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="Godot Logs"]
+
+[node name="ConsoleHistory" type="Node" parent="."]
+script = ExtResource("3_fg4ds")

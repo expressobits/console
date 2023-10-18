@@ -1,26 +1,20 @@
 class_name ConsoleCallback
 extends AbstractCallback
 
-# @var  String
-var _name
+var _name : String
 
 
-# @param  RefCounted   target
-# @param  String      name
-# @param  Utils.Type  type
-func _init(target, name, type = CallbackUtils.Type.UNKNOWN):
+func _init(target, name : String, type : CallbackUtils.Type = CallbackUtils.Type.UNKNOWN):
 	super(target, type if type != CallbackUtils.Type.UNKNOWN else CallbackUtils.get_type(target, name))
 	self._name = name
 
 
-# @returns  String
-func get_name():
+func get_name() -> String:
 	return self._name
 
 
 # Ensure callback target exists
-# @returns  bool
-func ensure():
+func ensure() -> bool:
 	if self._target:
 		var wr = weakref(self._target)
 		if wr.get_ref() == null:
@@ -37,9 +31,7 @@ func ensure():
 	return true
 
 
-# @param    Variant[]  argv
-# @returns  Variant
-func call(argv = []):
+func call(argv : Array = []):
 	# Ensure callback target still exists
 	if !ensure():
 		print(errors["qc.callback.call.ensure_failed"] % [ self._target, self._name ])

@@ -1,38 +1,30 @@
 class_name BaseConsoleType
 
-enum CHECK \
+enum Check \
 {
 	OK,
 	FAILED,
 	CANCELED
 }
 
-
-# @var  String
-var _name
+var _name : String
 
 
-# @param  String  name
-func _init(name):
+func _init(name : String):
 	self._name = name
 
 
 # Assignment check.
 # Returns one of the statuses:
 # CHECK.OK, CHECK.FAILED and CHECK.CANCELED
-# @param    Variant  value
-# @returns  int
-func check(value):
-	return CHECK.OK
+func check(value) -> Check:
+	return Check.OK
 
 
 # Normalize variable
-# @param    Variant  value
-# @returns  Variant
 func normalize(value):
 	return value
 
 
-# @returns  String
-func to_string():
+func to_string() -> String:
 	return self._name

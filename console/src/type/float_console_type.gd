@@ -6,7 +6,5 @@ func _init():
 	super('Float', '^[+-]?([0-9]*[\\.\\,]?[0-9]+|[0-9]+[\\.\\,]?[0-9]*)([eE][+-]?[0-9]+)?$')
 
 
-# @param    Variant  value
-# @returns  float
-func normalize(value):
+func normalize(value) -> float:
 	return float(self._reextract(value).replace(',', '.'))

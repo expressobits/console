@@ -2,28 +2,19 @@ class_name CommandService
 extends RefCounted
 
 
-# @var  Console
 var _console
-
-# @var  CommandCollection
 var _command_collection = CommandCollection.new()
 
 
-# @param  Console  console
 func _init(console):
 	self._console = console
 
 
-# @returns  Iterator
-func values():
+func values() -> Iterator:
 	return self._command_collection.get_value_iterator()
 
 
-# @param    String       command_name
-# @param    RefCounted    target
-# @param    String|null  target_name
-# @returns  CommandBuilder
-func create(command_name, target, target_name = null):
+func create(command_name : String, target, target_name = null) -> CommandBuilder:
 	return CommandBuilder.new(self._console, self, command_name, target, target_name)
 
 
@@ -37,24 +28,22 @@ func set(command_name, command):
 	else:
 		return false
 
+
 # @param    String   command_name
 # @returns  Command|null
 func get(command_name):
 	return self._command_collection.get(command_name)
 
-# @param    String   command_name
-# @returns  CommandCollection
-func find(command_name):
+
+func find(command_name : String):
 	return self._command_collection.find(command_name)
 
-# @param    String   command_name
-# @returns  void
-func remove(command_name):
+
+func remove(command_name : String):
 	return self._command_collection.remove(command_name)
 
-# @param    String   command_name
-# @returns  String
-func autocomplete(command_name):
+
+func autocomplete(command_name : String) -> String:
 	var commands = self.find(command_name)
 
 	if commands.length == 1:

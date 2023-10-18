@@ -2,16 +2,11 @@ class_name FloatRangeConsoleType
 extends BaseRangeConsoleType
 
 
-# @param  float  minValue
-# @param  float  maxValue
-# @param  float  step
-func _init(minValue = 0.0, maxValue = 100.0, step = 0.1):
+func _init(minValue : float = 0.0, maxValue : float = 100.0, step : float = 0.1):
 	super('FloatRange', minValue, maxValue, step)
 
 
 # Normalize variable.
-# @param    Variant  value
-# @returns  Variant
 func normalize(value):
 	value = float(self._reextract(value).replace(',', '.'))
 	value = clamp(value, self.get_min_value(), self.get_max_value())

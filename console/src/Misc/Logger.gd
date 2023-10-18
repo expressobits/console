@@ -2,7 +2,7 @@ class_name Logger
 extends RefCounted
 
 
-enum TYPE \
+enum LogType \
 {
 	DEBUG,
 	INFO,
@@ -11,14 +11,10 @@ enum TYPE \
 	NONE
 }
 
-
-# @var  int
-var logLevel = TYPE.WARNING
+var logLevel : LogType = LogType.WARNING
 
 
-# @param    int  in_log_level
-# @returns  Log
-func set_log_level(in_log_level):
+func set_log_level(in_log_level : LogType) -> Logger:
 	logLevel = in_log_level
 	return self
 
@@ -26,46 +22,34 @@ func set_log_level(in_log_level):
 # ```gdscript
 # Console.Log.log("Hello world!", Console.Log.TYPE.INFO)
 # ```
-#
-# @param    String  message
-# @param    int     type
-# @returns  Log
-func log(message, type = TYPE.INFO):
+func log(message : String, type = LogType.INFO) -> Logger:
 	match type:
-		TYPE.DEBUG:   debug(message)
-		TYPE.INFO:    info(message)
-		TYPE.WARNING: warn(message)
-		TYPE.ERROR:   error(message)
+		LogType.DEBUG:   debug(message)
+		LogType.INFO:    info(message)
+		LogType.WARNING: warn(message)
+		LogType.ERROR:   error(message)
 	return self
 
 
-# @param    String  message
-# @returns  Log
-func debug(message):
-	if logLevel <= TYPE.DEBUG:
+func debug(message : String) -> Logger:
+	if logLevel <= LogType.DEBUG:
 		Console.write_line('[color=green][DEBUG][/color] ' + str(message))
 	return self
 
 
-# @param    String  message
-# @returns  Log
-func info(message):
-	if logLevel <= TYPE.INFO:
+func info(message : String) -> Logger:
+	if logLevel <= LogType.INFO:
 		Console.write_line('[color=blue][INFO][/color] ' + str(message))
 	return self
 
 
-# @param    String  message
-# @returns  Log
-func warn(message):
-	if logLevel <= TYPE.WARNING:
+func warn(message : String) -> Logger:
+	if logLevel <= LogType.WARNING:
 		Console.write_line('[color=yellow][WARNING][/color] ' + str(message))
 	return self
 
 
-# @param    String  message
-# @returns  Log
-func error(message):
-	if logLevel <= TYPE.ERROR:
+func error(message : String) -> Logger:
+	if logLevel <= LogType.ERROR:
 		Console.write_line('[color=red][ERROR][/color] ' + str(message))
 	return self

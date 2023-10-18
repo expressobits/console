@@ -20,7 +20,7 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-class_name GodotLogs
+class_name GodotConsoleNativeLogs
 extends Node
 #Monitor built-in logs
 
@@ -34,9 +34,8 @@ const WARNING_MSG_PREFIX := "USER WARNING: "
 #Any logs with three spaces at the beginning will be ignored.
 const IGNORE_PREFIX := "   " 
 
-@export var timer:Timer
-
-var godot_log:FileAccess
+@export var timer : Timer
+var godot_log : FileAccess
 
 func _ready():
 	var file_logging_enabled = ProjectSettings.get("debug/file_logging/enable_file_logging") or ProjectSettings.get("debug/file_logging/enable_file_logging.pc")

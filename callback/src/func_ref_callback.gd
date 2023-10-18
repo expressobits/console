@@ -8,14 +8,11 @@ func _init(target):
 
 
 # Ensure callback target exists
-# @returns  bool
-func ensure():
+func ensure() -> bool:
 	return self._target.is_valid()
 
 
-# @param    Variant[]  argv
-# @returns  Variant
-func call(argv = []):
+func call(argv : Array = []):
 	# Ensure callback target still exists
 	if !ensure():
 		print(errors["qc.callback.call.ensure_failed"] % [ self._target ])

@@ -1,10 +1,7 @@
 class_name ConsoleTrie
 extends RefCounted
 
-
-# @var  TrieNode
 var _root
-
 
 # Trie data structure class
 func _init():
@@ -13,10 +10,7 @@ func _init():
 
 # If not present, inserts key into trie.
 # If the key is prefix of trie node, just marks leaf node.
-# @param    String   key
-# @param    Variant  value
-# @returns  void
-func insert(key, value):
+func insert(key : String, value):
 	var current_node = self._root
 
 	var length = len(key)
@@ -37,9 +31,7 @@ func insert(key, value):
 
 # Search key in the trie.
 # Returns true if key presents in trie, else false.
-# @param    String  key
-# @returns  bool
-func has(key):
+func has(key : String) -> bool:
 	return !!self.get(key)
 
 
@@ -65,10 +57,7 @@ func get(key):
 
 class TrieNode:
 
-	# @var  Dictionary
-	var _children
-
-	# @var  Variant|null
+	var _children : Dictionary
 	var value
 
 
@@ -78,22 +67,17 @@ class TrieNode:
 		self.value = null
 
 
-	# @returns  Dictionary
-	func get_children():
+	func get_children() -> Dictionary:
 		return self._children
 
 
-	# @param    int  index
-	# @returns  bool
-	func has_child(index):
+	func has_child(index : int) -> bool:
 		return index in self._children
 
-	# @param    int  index
-	# @returns  Dictionary
-	func get_child(index):
+
+	func get_child(index : int) -> Dictionary:
 		return self._children[index]
 
-	# @param    int       index
-	# @returns  void
-	func initialize_child_at(index):
+
+	func initialize_child_at(index : int):
 		self._children[index] = TrieNode.new()

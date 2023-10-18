@@ -18,14 +18,14 @@ func _ready():
 	bbcode_enabled = true
 
 
-func append_text_custom(message):
+func append_text_custom(message : String):
 	text += message
 	if timed_messages > 0.0:
 		logs.append(message)
 		times.append(timed_messages)
 		
 
-func _process(delta):
+func _process(delta : float):
 	for i in times.size():
 		times[i] -= delta
 

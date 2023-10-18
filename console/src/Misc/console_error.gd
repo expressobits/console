@@ -1,29 +1,21 @@
 class_name ConsoleError
 
-# @var  String
-var _message
-
-# @var  Variant|null
+var _message : String
 var _code
 
 
-# @param  String        message
-# @param  Variant|null  code
-func _init(message, code = null):
+func _init(message : String, code = null):
   self._message = message
   self._code = code
 
 
-# @returns  String
-func get_message():
+func get_message() -> String:
   return self._message
 
 
-# @returns  Variant|null
 func get_code():
   return self._code
 
 
-# @returns  String
-func to_string():
+func to_string() -> String:
   return self._message

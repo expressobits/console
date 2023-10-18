@@ -6,8 +6,6 @@ func _init():
 	super('Int', '^[+-]?\\d+$')
 
 
-# @param    Variant  value
-# @returns  int
-func normalize(value):
+func normalize(value) -> int:
 	return value
 #	return int(self._reextract(value))

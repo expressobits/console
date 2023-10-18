@@ -2,9 +2,7 @@ class_name RegExLib
 extends RefCounted
 
 
-# @param  string  pattern
-# @param  string  subject
-static func split(pattern, subject):
+static func split(pattern : String, subject : String):
 	var r = RegEx.new()
 	r.compile(pattern)
 

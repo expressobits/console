@@ -2,26 +2,14 @@ class_name ConsoleCommand
 extends RefCounted
 
 enum ArgType { NORMAL = 0, STRING = 1}
-
-# @var  String
-var _name
-
-# @var  Callback
+var _name : String
 var _target
-
-# @var  Argument[]
-var _arguments
-
-# @var  String|null
+var _arguments : Array
 var _description
 
 var _arg_type : ArgType = ArgType.NORMAL
 
-# @param  String       name
-# @param  Callback     target
-# @param  Argument[]   arguments
-# @param  String|null  description
-func _init(name, target, arguments = [], description = null, arg_type = ArgType.NORMAL):
+func _init(name : String, target, arguments : Array = [], description = null, arg_type : ArgType = ArgType.NORMAL):
 	self._name = name
 	self._target = target
 	self._arguments = arguments
@@ -29,43 +17,37 @@ func _init(name, target, arguments = [], description = null, arg_type = ArgType.
 	self._arg_type = arg_type
 
 
-# @returns  String
-func get_name():
+func get_name() -> String:
 	return self._name
 
 
-# @returns  Callback
 func get_target():
 	return self._target
 
 
-# @returns  Argument[]
-func get_arguments():
+func get_arguments() -> Array:
 	return self._arguments
 
 
-# @returns  String|null
 func get_description():
 	return self._description
 
 
-# @param    Array  inArgs
-# @returns  Variant
-func execute(inArgs = []):
+func execute(in_args : Array = []):
 	var args = []
-	var argAssig
+	var arg_assig
 
 	var i = 0
 
-	while i < self._arguments.size() and i < inArgs.size():
+	while i < self._arguments.size() and i < in_args.size():
 
-		argAssig = self._arguments[i].set_value(inArgs[i])
+		arg_assig = self._arguments[i].set_value(in_args[i])
 
-		if argAssig == FAILED:
+		if arg_assig == FAILED:
 			Console.Log.warn(\
 				'Expected %s %s as argument.' % [self._arguments[i].get_type().to_string(), str(i + 1)])
 			return
-		elif argAssig == ConsoleArgument.ASSIGNMENT.CANCELED:
+		elif arg_assig == ConsoleArgument.Assignment.CANCELED:
 			return OK
 
 		args.append(self._arguments[i].get_normalized_value())
@@ -77,7 +59,6 @@ func execute(inArgs = []):
 	return null
 
 
-# @returns  void
 func describe():
 	Console.write_line('NAME')
 	Console.write_line(self._get_command_name())
@@ -99,6 +80,6 @@ func describe():
 
 	Console.write_line()
 
-# @returns  String
-func _get_command_name():
+
+func _get_command_name() -> String:
 	return '	[color=#ffff66][url=%s]%s[/url][/color]' % [self._name, self._name]

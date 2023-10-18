@@ -2,21 +2,14 @@ class_name BaseCommands
 extends RefCounted
 
 
-# @var  Console
 var _console
 
-
-# @param  Console  console
 func _init(console):
 	self._console = console
 
 	self._console.add_command('echo', self._console, 'write')\
 		.set_description('Prints a string.')\
 		.add_argument('text', TYPE_STRING)\
-		.register()
-
-	self._console.add_command('history', self._console.history, 'print_all')\
-		.set_description('Print all previous commands used during the session.')\
 		.register()
 
 	self._console.add_command('commands', self, '_list_commands')\
@@ -42,8 +35,6 @@ func _init(console):
 
 
 # Display help message or display description for the command.
-# @param    String|null  command_name
-# @returns  void
 func _help(command_name = null):
 	if command_name:
 		var command = self._console.get_command(command_name)
@@ -61,12 +52,10 @@ func _help(command_name = null):
 
 
 # Prints out engine version.
-# @returns  void
 func _version():
 	self._console.write_line(Engine.get_version_info())
 
 
-# @returns  void
 func _list_commands():
 	Console.write_line('[color=#ff66ff]=== ALL COMMANDS ===[/color]')
 	for command in self._console._command_service.values():
@@ -75,7 +64,6 @@ func _list_commands():
 
 
 # Quitting application.
-# @returns  void
 func _quit():
 	self._console.Log.warn('Quitting application...')
 	self._console.get_tree().quit()

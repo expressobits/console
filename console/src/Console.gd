@@ -2,51 +2,27 @@ extends Node
 
 ## Signals
 
-# @param  bool  is_console_shown
-signal toggled(is_console_shown)
-# @param  String       name
-# @param  RefCounted    target
-# @param  String|null  target_name
-signal command_added(name, target, target_name)
-# @param  String  name
-signal command_removed(name)
-# @param  Command  command
-signal command_executed(command)
-# @param  String  name
-signal command_not_found(name)
-
-signal write_message(message)
-
+signal toggled(is_console_shown : bool)
+signal command_added(name : String, target, target_name)
+signal command_removed(name : String)
+signal command_executed(command : ConsoleCommand)
+signal command_not_found(name : String)
+signal write_message(message : String)
 signal clear_message
+signal raw_input(raw_input : String)
 
-# @var  History
-var history : ConsoleHistory = ConsoleHistory.new(100):
-	set(value): 
-		_set_readonly(value)
-
-# @var  Logger
+@export var history : ConsoleHistory
 var Log : Logger = Logger.new():
 	set(value): 
 		_set_readonly(value)
 
-# @var  Command/CommandService
 var _command_service
-
-# Used to clear text from bb tags
-# @var  RegEx
-var _erase_bb_tags_regex
-
-# @var  bool
-var is_console_shown = true
-
-# @var  bool
-var consume_input = true
-
-var use_prefix_for_commands := true
-
+var _erase_bb_tags_regex : RegEx
+var is_console_shown : bool = true
+var consume_input : bool = true
+var use_prefix_for_commands : bool = true
 var default_command : String
-
-var print_command_in_console := false
+var print_command_in_console : bool = false
 
 
 func _init():
@@ -73,31 +49,27 @@ func _ready():
 	BaseCommands.new(self)
 
 
-# @param  InputEvent  e
-func _input(e):
+func _input(e : InputEvent):
 	if not e is InputEventKey:
 		return
 	if e.is_action_pressed(ConsoleDefaultActions.CONSOLE_TOGGLE):
 		self.toggle_console()
+		
 	if is_console_shown and e.is_action_pressed(ConsoleDefaultActions.CLOSE_CONSOLE):
 		self.toggle_console()
 	if not is_console_shown and e.is_action_pressed(ConsoleDefaultActions.OPEN_CONSOLE):
 		self.toggle_console()
 
 
-# @returns  Command/CommandService
 func get_command_service():
 	return self._command_service
 
 
-# @param    String  name
-# @returns  Command/Command|null
-func get_command(name):
+func get_command(name : String):
 	return self._command_service.get(name)
 
-# @param    String  name
-# @returns  Command/CommandCollection
-func find_commands(name):
+
+func find_commands(name : String):
 	return self._command_service.find(name)
 
 # Example usage:
@@ -107,48 +79,37 @@ func find_commands(name):
 # 	.add_argument('name', TYPE_STRING)\
 # 	.register()
 # ```
-# @param    String       name
-# @param    RefCounted    target
-# @param    String|null  target_name
-# @returns  Command/CommandBuilder
-func add_command(name, target, target_name = null):
+func add_command(name : String, target, target_name = null):
 	emit_signal("command_added", name, target, target_name)
 	return self._command_service.create(name, target, target_name)
 
-# @param    String  name
-# @returns  int
-func remove_command(name):
+
+func remove_command(name : String):
 	emit_signal("command_removed", name)
 	return self._command_service.remove(name)
 
 
-# @param    String  message
-# @returns  void
-func write(message):
+func write(message : String):
 	message = str(message)
 	emit_signal("write_message", message)
 	# print(self._erase_bb_tags_regex.sub(message, '', true))
 
-# @param    String  message
-# @returns  void
-func write_line(message = ''):
+
+func write_line(message : String = ''):
 	message = str(message)
 	emit_signal("write_message", message + '\n')
 	# print(self._erase_bb_tags_regex.sub(message, '', true))
 
 
-# @returns  void
 func clear():
 	emit_signal("clear_message")
 
 
-# @returns  Console
 func toggle_console():
 	is_console_shown = !self.is_console_shown
 	emit_signal("toggled", is_console_shown)
 	return self
 
 
-# @returns  void
 func _set_readonly(value):
 	Log.warn('qc/console: _set_readonly: Attempted to set a protected variable, ignoring.')

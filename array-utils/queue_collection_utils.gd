@@ -1,26 +1,23 @@
 extends CollectionUtils
 class_name QueueCollectionUtils
 
-# @var  int
-var _max_length = -1
+var _max_length : int = -1
+
 
 func _init():
 	super()
 
-# @returns  int
-func get_max_length():
+
+func get_max_length() -> int:
 	return self._max_length
 
-# @param    int  max_length
-# @returns  QueueCollection
-func set_max_length(max_length):
+
+func set_max_length(max_length : int) -> QueueCollectionUtils:
 	self._max_length = max_length
 	return self
 
 
-# @param    Variant  value
-# @returns  QueueCollection
-func push(value):
+func push(value) -> QueueCollectionUtils:
 	if self.length >= 0 and self.last() == value:
 		return
 
@@ -32,7 +29,6 @@ func push(value):
 	return self
 
 
-# @returns  Variant
 func pop():
 	var value = self.get_by_index(0)
 	self.remove_by_index(0)

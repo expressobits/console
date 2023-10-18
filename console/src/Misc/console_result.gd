@@ -1,15 +1,10 @@
 class_name ConsoleResult
 
 
-# @var  Variant
 var _value
-
-# @var  Variant
 var _error
 
 
-# @param  Variant  value
-# @param  Variant  error
 func _init(value, error = null):
 	self._value = value
 
@@ -19,21 +14,17 @@ func _init(value, error = null):
 	self._error = error
 
 
-# @returns Variant
 func get_value():
 	return self._value
 
 
-# @returns  Variant
 func get_error():
 	return self._error
 
-# @returns  bool
-func has_error():
+
+func has_error() -> bool:
 	return !!self._error
 
 
-# @param    String  message
-# @returns  Error
-static func create_error(message):
+static func create_error(message : String) -> ConsoleError:
 	return ConsoleError.new(message)

@@ -1,61 +1,47 @@
 class_name ConsoleLine
 extends LineEdit
 
-
 const COMMANDS_SEPARATOR = ';'
-
 const RECOMMANDS_SEPARATOR = '(?<!\\\\)' + COMMANDS_SEPARATOR
-
 const COMMAND_PARTS_SEPARATOR = ' '
-
 const QUOTES = [ '"', "'" ]
-
 const SCREENERS = [ '\\/' ]
-
 const COMMAND_PREFIX = '/'
 
-# @var  String|null
 var _tmp_user_entered_command
-
-# @var  String
 var _current_command
+var _autocomplete_triggered_timer : SceneTreeTimer
 
 
 func _ready():
 	# Console keyboard control
 	self.set_process_input(true)
 	self.caret_blink = true
-
 	self.connect("text_submitted", execute)
 
 
-# @param  InputEvent
-func _gui_input(event):
+func _gui_input(event : InputEvent):
 	pass
 	#if Console.consume_input and self.has_focus():
 		#accept_event()
 
 
-# @var  SceneTreeTimer
-var _autocomplete_triggered_timer
-
-# @param  InputEvent  e
-func _input(e):
+func _input(e : InputEvent):
 	# Don't process input if console is not visible
 	if !is_visible_in_tree():
 		return
 
 	# Show next line in history
 	if Input.is_action_just_pressed(ConsoleDefaultActions.CONSOLE_HISTORY_UP):
-		self._current_command = Console.history.current()
-		Console.history.previous()
+		self._current_command = Console.history.collection.current()
+		Console.history.collection.previous()
 
 		if self._tmp_user_entered_command == null:
 			self._tmp_user_entered_command = self.text
 
 	# Show previous line in history
 	if Input.is_action_just_pressed(ConsoleDefaultActions.CONSOLE_HISTORY_DOWN):
-		self._current_command = Console.history.next()
+		self._current_command = Console.history.collection.next()
 
 #		if self._current_command != null and self._tmp_user_entered_command != null:
 #				self._current_command = self._tmp_user_entered_command
@@ -88,19 +74,12 @@ func _input(e):
 		self._current_command = null
 
 
-# @param    String  text
-# @param    bool    move_caret_to_end
-# @returns  void
-func set_text(text, move_caret_to_end = true):
+func set_text(text : String, move_caret_to_end : bool = true):
 	self.text = text
 	self.grab_focus()
 
 	if move_caret_to_end:
 		self.caret_column = text.length()
-
-
-# @param    String  input
-# @returns  void
 
 
 func execute(raw_input : String):
@@ -139,74 +118,67 @@ func execute(raw_input : String):
 			else:
 				Console.write_line('Command `' + parsedCommand.name + '` not found.')
 				Console.emit_signal("command_not_found", parsedCommand.name)
-
-	Console.history.push(raw_input)
+	
+	Console.emit_signal("raw_input", raw_input)
 	self.clear()
 
 
-# @static
-# @param    String             input
-# @returns  Array<Dictionary>
-static func _parse_commands(input):
-	var resultCommands = []
+static func _parse_commands(input : String) -> Array[Dictionary]:
+	var result_commands : Array[Dictionary] = []
 
 	# @var  PoolStringArray
-	var rawCommands = RegExLib.split(RECOMMANDS_SEPARATOR, input)
-	for rawCommand in rawCommands:
-		if rawCommand:
-			resultCommands.append(_parse_command(rawCommand))
+	var raw_commands = RegExLib.split(RECOMMANDS_SEPARATOR, input)
+	for raw_command in raw_commands:
+		if raw_command:
+			result_commands.append(_parse_command(raw_command))
 
-	return resultCommands
+	return result_commands
 
 
-# @static
-# @param    String  rawCommand
-# @returns  Dictionary
-static func _parse_command(rawCommand, string_formatted_args := true):
+static func _parse_command(raw_command : String, string_formatted_args : bool = true) -> Dictionary:
 	var name = ''
 	var arguments : Array[String]
 
 	var beginning = 0  # int
-	var openQuote  # String|null
-	var isInsideQuotes = false  # boolean
-	var subString  # String|null
-	for i in rawCommand.length():
+	var open_quote  # String|null
+	var is_inside_quotes : bool = false  # boolean
+	var sub_string  # String|null
+	for i in raw_command.length():
 		# Quote
-		if rawCommand[i] in QUOTES and \
-				(i == 0 or i > 0 and not rawCommand[i - 1] in SCREENERS):
-			if isInsideQuotes and rawCommand[i] == openQuote:
-				openQuote = null
-				isInsideQuotes = false
-				subString = rawCommand.substr(beginning, i - beginning)
+		if raw_command[i] in QUOTES and \
+				(i == 0 or i > 0 and not raw_command[i - 1] in SCREENERS):
+			if is_inside_quotes and raw_command[i] == open_quote:
+				open_quote = null
+				is_inside_quotes = false
+				sub_string = raw_command.substr(beginning, i - beginning)
 				beginning = i + 1
-			elif !isInsideQuotes:
-				openQuote = rawCommand[i]
-				isInsideQuotes = true
+			elif !is_inside_quotes:
+				open_quote = raw_command[i]
+				is_inside_quotes = true
 				beginning += 1
 
 		# Separate arguments
-		elif rawCommand[i] == COMMAND_PARTS_SEPARATOR and !isInsideQuotes or i == rawCommand.length() - 1:
-			if i == rawCommand.length() - 1:
-				subString = rawCommand.substr(beginning, i - beginning + 1)
+		elif raw_command[i] == COMMAND_PARTS_SEPARATOR and !is_inside_quotes or i == raw_command.length() - 1:
+			if i == raw_command.length() - 1:
+				sub_string = raw_command.substr(beginning, i - beginning + 1)
 			else:
-				subString = rawCommand.substr(beginning, i - beginning)
+				sub_string = raw_command.substr(beginning, i - beginning)
 			beginning = i + 1
 
 		# Save separated argument
-		if subString != null and typeof(subString) == TYPE_STRING and !subString.is_empty():
+		if sub_string != null and typeof(sub_string) == TYPE_STRING and !sub_string.is_empty():
 			if name.is_empty():
-				name = subString
+				name = sub_string
 			else:
-				arguments.append(subString)
-			subString = null
+				arguments.append(sub_string)
+			sub_string = null
 
 	return {
-		'command': rawCommand,
+		'command': raw_command,
 		'name': name,
 		'arguments': arguments
 	}
 
 
-# @returns  void
 func _set_readonly(value):
 	Console.Log.warn('QC/Console/ConsoleLine: _set_readonly: Attempted to set a protected variable, ignoring.')

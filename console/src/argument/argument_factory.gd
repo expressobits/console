@@ -5,11 +5,7 @@ extends RefCounted
 const FALLBACK_ERROR = '73ca5439-fd62-442f-8a33-73135dbf5469'
 
 
-# @param    String        name
-# @param    int|BaseType  type
-# @param    String|null   description
-# @returns  Result
-static func create(name, type = 0, description = null):
+static func create(name : String, type = 0, description = null) -> ConsoleResult:
 	var error_message
 
 	# Define argument type

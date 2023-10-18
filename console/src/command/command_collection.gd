@@ -2,22 +2,14 @@ class_name CommandCollection
 extends CollectionUtils
 
 
-func _init(collection = {}):
+func _init(collection : Dictionary = {}):
 	super(collection)
 
 
-# @param    String  command_name
-# @returns  CommandCollection
-func find(command_name):
+func find(command_name : String) -> CommandCollection:
 	var filter_cb_fn = CallbackBuilder.new(self).set_method("_find_match").bind([command_name]).build()
 	return self.filter(filter_cb_fn)
 
 
-# @param    String      match_key
-# @param    String      key
-# @param    String      value
-# @param    int         _i
-# @param    Collection  _collection
-# @returns  bool
-func _find_match(match_key, key, value, _i, _collection):
+func _find_match(match_key : String, key : String, value, _i : int, _collection : CommandCollection) -> bool:
 	return key.begins_with(match_key)

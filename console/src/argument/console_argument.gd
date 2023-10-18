@@ -2,7 +2,7 @@ class_name ConsoleArgument
 extends RefCounted
 
 
-enum ASSIGNMENT \
+enum Assignment \
 {
 	OK,
 	FAILED,
@@ -10,49 +10,33 @@ enum ASSIGNMENT \
 }
 
 
-# @var  String
-var _name
-
-# @var  BaseType
-var _type
-
-# @var  String|null
+var _name : String
+var _type : BaseConsoleType
 var _description
-
-# @var  String
-var _original_value
-
-# @var  Variant
+var _original_value : String
 var _normalized_value
 
 
-# @param  String       name
-# @param  BaseType     type
-# @param  String|null  description
-func _init(name, type, description = null):
+func _init(name : String, type : BaseConsoleType, description = null):
 	self._name = name
 	self._type = type
 	self._description = description
 
 
 # @returns  String
-func get_name():
+func get_name() -> String:
 	return self._name
 
 
-# @returns  BaseType
-func get_type():
+func get_type() -> BaseConsoleType:
 	return self._type
 
 
-# @returns  String
-func get_value():
+func get_value() -> String:
 	return self._original_value
 
 
-# @param    Variant  value
-# @returns  int
-func set_value(value):
+func set_value(value) -> int:
 	self._original_value = value
 
 	var check = self._type.check(value)
@@ -62,11 +46,9 @@ func set_value(value):
 	return check
 
 
-# @returns  Variant
 func get_normalized_value():
 	return self._normalized_value
 
 
-# @returns  String
-func describe():
+func describe() -> String:
 	return '<%s:%s>' % [self._name, self._type.to_string()]

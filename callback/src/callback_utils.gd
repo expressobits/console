@@ -8,10 +8,8 @@ enum Type \
 	METHOD
 }
 
-# @param    RefCounted  target
-# @param    String     name
-# @returns  int
-static func get_type(target, name):
+
+static func get_type(target, name : String) -> int:
 	# Is it a METHOD
 	if target.has_method(name):
 		return Type.METHOD
@@ -23,9 +21,7 @@ static func get_type(target, name):
 	return Type.UNKNOWN
 
 
-# @param    RefCounted  obj
-# @returns  bool
-static func is_funcref(obj):
+static func is_funcref(obj) -> bool:
 	return "function" in obj \
 		and obj.has_method("set_function") \
 		and obj.has_method("get_function") \

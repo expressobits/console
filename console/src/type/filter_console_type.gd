@@ -2,33 +2,26 @@ class_name FilterConsoleType
 extends BaseConsoleType
 
 
-enum MODE \
+enum Mode \
 {
 	ALLOW,
 	DENY
 }
 
 
-# @var  Array
-var _filterList
-
-# @var  int
-var _mode
+var _filterList : Array
+var _mode : Mode
 
 
-# @param  Array  filterList
-# @param  int    mode
-func _init(filterList, mode = MODE.ALLOW):
+func _init(filterList : Array, mode : Mode = Mode.ALLOW):
 	super('Filter')
 	self._filterList = filterList
 	self._mode = mode
 
 
-# @param    Variant  value
-# @returns  int
-func check(value):
-	if (self._mode == MODE.ALLOW and self._filterList.has(value)) or \
-		(self._mode == MODE.DENY and !self._filterList.has(value)):
-		return CHECK.OK
+func check(value) -> Check:
+	if (self._mode == Mode.ALLOW and self._filterList.has(value)) or \
+		(self._mode == Mode.DENY and !self._filterList.has(value)):
+		return Check.OK
 
-	return CHECK.CANCELED
+	return Check.CANCELED

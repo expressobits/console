@@ -13,9 +13,7 @@ const TYPE_LIST = [
 ]
 
 
-# @param    int  type
-# @returns  Result<Resource, Error>
-static func _type_const_to_type_list_index(type):
+static func _type_const_to_type_list_index(type : int) -> ConsoleResult:
 	if type >= 0 and type < TYPE_LIST.size() and TYPE_LIST[type] != null:
 		return ConsoleResult.new(TYPE_LIST[type])
 	else:
@@ -23,9 +21,7 @@ static func _type_const_to_type_list_index(type):
 			'Type `%s` is not supported by console, please rerer to the documentation to obtain full list of supported engine types.' % int(type))
 
 
-# @param    int  engine_type
-# @returns  Result<BaseType, Error>
-static func create(engine_type):
+static func create(engine_type : Variant.Type) -> ConsoleResult:
 	if typeof(engine_type) != TYPE_INT:
 		return ConsoleResult.new(null, "First argument (engine_type) must be of type int, `%s` type provided." % typeof(engine_type))
 

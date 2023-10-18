@@ -2,30 +2,21 @@ class_name BaseRegexCheckedConsoleType
 extends BaseConsoleType
 
 
-# @var  String
-var _pattern
-
-# @var  RegEx
-var _regex
+var _pattern : String
+var _regex : RegEx
 
 
-# @param  String  name
-# @param  String  pattern
-func _init(name, pattern):
+func _init(name : String, pattern : String):
 	super(name)
 	self._pattern = pattern
 	self._regex = RegEx.new()
 	self._regex.compile(self._pattern)
 
 
-# @param    Variant  value
-# @returns  int
-func check(value):
-	return CHECK.OK if self._reextract(value) else CHECK.FAILED
+func check(value) -> Check:
+	return Check.OK if self._reextract(value) else Check.FAILED
 
 
-# @param    Variant  value
-# @returns  String|null
 func _reextract(value):
 	var rematch = self._regex.search(value)
 

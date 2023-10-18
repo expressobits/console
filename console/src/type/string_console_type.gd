@@ -6,8 +6,5 @@ func _init():
 	super('String')
 
 
-# Normalize variable
-# @param    Varian  value
-# @returns  String
-func normalize(value):
+func normalize(value) -> String:
 	return str(value)
