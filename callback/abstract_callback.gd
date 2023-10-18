@@ -1,7 +1,7 @@
 extends RefCounted
 class_name AbstractCallback
 
-const errors = preload("../assets/translations/errors.en.gd").messages
+const errors = preload("assets/translations/errors.en.gd").messages
 
 var _target
 var _type : CallbackUtils.Type

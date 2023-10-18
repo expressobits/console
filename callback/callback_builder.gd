@@ -1,7 +1,7 @@
 class_name CallbackBuilder
 extends RefCounted
 
-const errors = preload("../assets/translations/errors.en.gd").messages
+const errors = preload("assets/translations/errors.en.gd").messages
 
 var _target
 var _name : String
