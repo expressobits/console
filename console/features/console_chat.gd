@@ -77,7 +77,7 @@ func _enter_message(id):
 		return
 	emit_signal("player_entered_messaged", id)
 	var name_of_message = player_names[id]
-	Console.write_line(str("[color=#ffff66][",name_of_message,"][/color] Enter world."))
+	Console.write_line(str("[color=#ffff66]",name_of_message," joined the server.[/color]"))
 
 
 func _exit_message(id):
@@ -85,4 +85,4 @@ func _exit_message(id):
 		return
 	emit_signal("player_exited_message", id)
 	var name_of_message = player_names[id]
-	Console.write_line(str("[color=#ffff66][",name_of_message,"][/color] Exit world."))
+	Console.write_line(str("[color=#ffff66]",name_of_message," left the server.[/color]"))
