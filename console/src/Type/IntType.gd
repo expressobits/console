@@ -1,5 +1,5 @@
-
-extends 'res://addons/console/console/src/Type/BaseRegexCheckedType.gd'
+class_name IntConsoleType
+extends BaseRegexCheckedConsoleType
 
 
 func _init():

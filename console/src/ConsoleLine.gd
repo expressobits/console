@@ -1,8 +1,5 @@
-
+class_name ConsoleLine
 extends LineEdit
-
-const DefaultActions = preload('../DefaultActions.gd')
-const RegExLib = preload('res://addons/console/regexlib/src/RegExLib.gd')
 
 
 const COMMANDS_SEPARATOR = ';'
@@ -49,23 +46,23 @@ func _input(e):
 		return
 
 	# Show next line in history
-	if Input.is_action_just_pressed(DefaultActions.CONSOLE_HISTORY_UP):
-		self._current_command = Console.History.current()
-		Console.History.previous()
+	if Input.is_action_just_pressed(ConsoleDefaultActions.CONSOLE_HISTORY_UP):
+		self._current_command = Console.history.current()
+		Console.history.previous()
 
 		if self._tmp_user_entered_command == null:
 			self._tmp_user_entered_command = self.text
 
 	# Show previous line in history
-	if Input.is_action_just_pressed(DefaultActions.CONSOLE_HISTORY_DOWN):
-		self._current_command = Console.History.next()
+	if Input.is_action_just_pressed(ConsoleDefaultActions.CONSOLE_HISTORY_DOWN):
+		self._current_command = Console.history.next()
 
 #		if self._current_command != null and self._tmp_user_entered_command != null:
 #				self._current_command = self._tmp_user_entered_command
 #				self._tmp_user_entered_command = null
 
 	# Autocomplete on TAB
-	if Input.is_action_just_pressed(DefaultActions.CONSOLE_AUTOCOMPLETE):
+	if Input.is_action_just_pressed(ConsoleDefaultActions.CONSOLE_AUTOCOMPLETE):
 		if self._autocomplete_triggered_timer and self._autocomplete_triggered_timer.get_time_left() > 0:
 			self._autocomplete_triggered_timer = null
 			var actual_text = self.text
@@ -143,7 +140,7 @@ func execute(raw_input : String):
 				Console.write_line('Command `' + parsedCommand.name + '` not found.')
 				Console.emit_signal("command_not_found", parsedCommand.name)
 
-	Console.History.push(raw_input)
+	Console.history.push(raw_input)
 	self.clear()
 
 

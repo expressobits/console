@@ -1,7 +1,5 @@
-
-extends "res://addons/console/array-utils/src/Collection.gd"
-
-const CallbackBuilder = preload("res://addons/console/callback/src/CallbackBuilder.gd")
+class_name CommandCollection
+extends CollectionUtils
 
 
 func _init(collection = {}):

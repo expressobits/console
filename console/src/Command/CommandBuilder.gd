@@ -1,10 +1,6 @@
-
+class_name CommandBuilder
 extends RefCounted
 
-const CallbackBuilder = preload('res://addons/console/callback/src/CallbackBuilder.gd')
-const Callback = preload('res://addons/console/callback/src/Callback.gd')
-const ArgumentFactory = preload('../Argument/ArgumentFactory.gd')
-const Command = preload('Command.gd')
 
 # @var  Console
 var _console
@@ -24,7 +20,7 @@ var _arguments
 # @var  String|null
 var _description
 
-var _arg_type : Command.ArgType = Command.ArgType.NORMAL
+var _arg_type : ConsoleCommand.ArgType = ConsoleCommand.ArgType.NORMAL
 
 
 # @param  Console         console
@@ -46,7 +42,7 @@ func _init(console, command_service, name, target, target_name = null):
 # @param    String|null  name
 # @returns  Callback|null
 func _initialize_target_callback(target, name = null):
-	if target is Callback:
+	if target is ConsoleCallback:
 		return target
 
 	name = name if name else self._name
@@ -96,6 +92,6 @@ func set_arg_type(argType):
 
 # @returns  void
 func register():
-	var command = Command.new(self._name, self._target, self._arguments, self._description, self._arg_type)
+	var command = ConsoleCommand.new(self._name, self._target, self._arguments, self._description, self._arg_type)
 	if not self._command_service.set(self._name, command):
 		self._console.Log.error("CommandBuilder::register: Failed to create [b]`%s`[/b] command. Command already exists." % self._name)

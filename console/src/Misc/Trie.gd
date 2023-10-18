@@ -1,4 +1,4 @@
-
+class_name ConsoleTrie
 extends RefCounted
 
 

@@ -1,4 +1,4 @@
-
+class_name BaseCommands
 extends RefCounted
 
 
@@ -15,7 +15,7 @@ func _init(console):
 		.add_argument('text', TYPE_STRING)\
 		.register()
 
-	self._console.add_command('history', self._console.History, 'print_all')\
+	self._console.add_command('history', self._console.history, 'print_all')\
 		.set_description('Print all previous commands used during the session.')\
 		.register()
 

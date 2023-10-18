@@ -1,3 +1,4 @@
+class_name ConsoleError
 
 # @var  String
 var _message

@@ -1,4 +1,4 @@
-
+class_name Iterator
 extends RefCounted
 
 const CallbackBuilder = preload("res://addons/console/callback/src/CallbackBuilder.gd")

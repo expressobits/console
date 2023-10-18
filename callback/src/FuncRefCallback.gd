@@ -1,10 +1,10 @@
-
-extends "./AbstractCallback.gd"
+class_name FuncRefCallback
+extends AbstractCallback
 
 
 # @param  FuncRef  target
 func _init(target):
-	super(target, Utils.Type.METHOD)
+	super(target, CallbackUtils.Type.METHOD)
 
 
 # Ensure callback target exists

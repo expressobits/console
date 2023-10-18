@@ -1,8 +1,5 @@
-
-extends "Utils.gd"
-
-const Iterator = preload("res://addons/console/iterator/src/Iterator.gd")
-
+extends ArrayUtils
+class_name CollectionUtils
 
 # @var  Dictionary
 var _collection = {}

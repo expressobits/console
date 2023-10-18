@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://wufx2ippa0vr"]
+[gd_scene load_steps=3 format=3 uid="uid://wufx2ippa0vr"]
 
 [ext_resource type="Script" path="res://addons/console/console/src/Console.gd" id="1"]
+[ext_resource type="Script" path="res://addons/console/extensions/godot_logs.gd" id="2_srcfb"]
 
-
-[node name="Console" type="CanvasLayer"]
-layer = 128
+[node name="Console" type="Node"]
 script = ExtResource("1")
+
+[node name="Godot Logs" type="Node" parent="." node_paths=PackedStringArray("timer")]
+script = ExtResource("2_srcfb")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="Godot Logs"]

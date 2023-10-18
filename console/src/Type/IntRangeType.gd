@@ -1,5 +1,5 @@
-
-extends 'res://addons/console/console/src/Type/BaseRangeType.gd'
+class_name IntRangeConsoleType
+extends BaseRangeConsoleType
 
 
 # @param  int   minValue

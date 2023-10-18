@@ -1,5 +1,5 @@
-
-extends 'res://addons/console/array-utils/src/QueueCollection.gd'
+class_name ConsoleHistory
+extends QueueCollectionUtils
 
 
 # @param  int  maxLength

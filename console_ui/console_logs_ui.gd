@@ -1,5 +1,5 @@
-extends RichTextLabel
 class_name ConsoleLogsUI
+extends RichTextLabel
 
 @export var timed_messages : float = 0.0
 

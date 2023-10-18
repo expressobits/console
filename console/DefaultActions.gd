@@ -1,3 +1,4 @@
+class_name ConsoleDefaultActions
 
 # @const  String
 const CONSOLE_TOGGLE = "console_toggle"

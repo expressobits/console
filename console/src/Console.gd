@@ -1,14 +1,4 @@
-
-extends CanvasLayer
-
-const BaseCommands = preload('Misc/BaseCommands.gd')
-const DefaultActions = preload('../DefaultActions.gd')
-const CommandService = preload('Command/CommandService.gd')
-
-### Custom console types
-const IntRangeType = preload('Type/IntRangeType.gd')
-const FloatRangeType = preload('Type/FloatRangeType.gd')
-const FilterType = preload('Type/FilterType.gd')
+extends Node
 
 ## Signals
 
@@ -30,12 +20,12 @@ signal write_message(message)
 signal clear_message
 
 # @var  History
-var History = preload('Misc/History.gd').new(100):
+var history : ConsoleHistory = ConsoleHistory.new(100):
 	set(value): 
 		_set_readonly(value)
 
 # @var  Logger
-var Log = preload('Misc/Logger.gd').new():
+var Log : Logger = Logger.new():
 	set(value): 
 		_set_readonly(value)
 
@@ -80,18 +70,18 @@ func _ready():
 		"Type [color=#ffff66][url=help]help[/url][/color] to get more information about usage")
 
 	# Init base commands
-	self.BaseCommands.new(self)
+	BaseCommands.new(self)
 
 
 # @param  InputEvent  e
 func _input(e):
 	if not e is InputEventKey:
 		return
-	if e.is_action_pressed(DefaultActions.CONSOLE_TOGGLE):
+	if e.is_action_pressed(ConsoleDefaultActions.CONSOLE_TOGGLE):
 		self.toggle_console()
-	if is_console_shown and e.is_action_pressed(DefaultActions.CLOSE_CONSOLE):
+	if is_console_shown and e.is_action_pressed(ConsoleDefaultActions.CLOSE_CONSOLE):
 		self.toggle_console()
-	if not is_console_shown and e.is_action_pressed(DefaultActions.OPEN_CONSOLE):
+	if not is_console_shown and e.is_action_pressed(ConsoleDefaultActions.OPEN_CONSOLE):
 		self.toggle_console()
 
 

@@ -1,8 +1,5 @@
-
+class_name ConsoleCommand
 extends RefCounted
-class_name Command
-
-const Argument = preload('../Argument/Argument.gd')
 
 enum ArgType { NORMAL = 0, STRING = 1}
 
@@ -68,7 +65,7 @@ func execute(inArgs = []):
 			Console.Log.warn(\
 				'Expected %s %s as argument.' % [self._arguments[i].get_type().to_string(), str(i + 1)])
 			return
-		elif argAssig == Argument.ASSIGNMENT.CANCELED:
+		elif argAssig == ConsoleArgument.ASSIGNMENT.CANCELED:
 			return OK
 
 		args.append(self._arguments[i].get_normalized_value())

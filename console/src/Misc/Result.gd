@@ -1,5 +1,4 @@
-
-const Error = preload("./Error.gd")
+class_name ConsoleResult
 
 
 # @var  Variant
@@ -37,4 +36,4 @@ func has_error():
 # @param    String  message
 # @returns  Error
 static func create_error(message):
-	return Error.new(message)
+	return ConsoleError.new(message)

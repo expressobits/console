@@ -1,6 +1,5 @@
-
+class_name CallbackUtils
 extends RefCounted
-
 
 enum Type \
 {
@@ -8,7 +7,6 @@ enum Type \
 	VARIABLE,
 	METHOD
 }
-
 
 # @param    RefCounted  target
 # @param    String     name

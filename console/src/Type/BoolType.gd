@@ -1,5 +1,5 @@
-
-extends 'res://addons/console/console/src/Type/BaseType.gd'
+class_name BoolConsoleType
+extends BaseConsoleType
 
 
 func _init():

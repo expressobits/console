@@ -1,6 +1,5 @@
-
-extends 'res://addons/console/console/src/Type/BaseType.gd'
-
+class_name ConsoleVariant
+extends BaseConsoleType
 
 func _init():
 	super('Any')

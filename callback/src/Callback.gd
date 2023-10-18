@@ -1,6 +1,5 @@
-
-extends "./AbstractCallback.gd"
-
+class_name ConsoleCallback
+extends AbstractCallback
 
 # @var  String
 var _name
@@ -9,8 +8,8 @@ var _name
 # @param  RefCounted   target
 # @param  String      name
 # @param  Utils.Type  type
-func _init(target, name, type = Utils.Type.UNKNOWN):
-	super(target, type if type != Utils.Type.UNKNOWN else Utils.get_type(target, name))
+func _init(target, name, type = CallbackUtils.Type.UNKNOWN):
+	super(target, type if type != CallbackUtils.Type.UNKNOWN else CallbackUtils.get_type(target, name))
 	self._name = name
 
 
@@ -31,7 +30,7 @@ func ensure():
 		print(errors["qc.callback.ensure.target_destroyed"] % self._name)
 		return false
 
-	if Utils.get_type(self._target, self._name) == Utils.Type.UNKNOWN:
+	if CallbackUtils.get_type(self._target, self._name) == CallbackUtils.Type.UNKNOWN:
 		print(errors["qc.callback.target_missing_mv"] % [ self._target, self._name ])
 		return false
 
@@ -49,13 +48,13 @@ func call(argv = []):
 	argv = self._get_args(argv)
 
 	# Execute call
-	if self._type == Utils.Type.VARIABLE:
+	if self._type == CallbackUtils.Type.VARIABLE:
 		if argv.size():
 			self._target.set(self._name, argv[0])
 
 		return self._target.get(self._name)
 
-	elif self._type == Utils.Type.METHOD:
+	elif self._type == CallbackUtils.Type.METHOD:
 		return self._target.callv(self._name, argv)
 
 	print(errors["qc.callback.call.unknown_type"] % [ self._target, self._name ])

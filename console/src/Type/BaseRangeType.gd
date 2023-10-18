@@ -1,5 +1,5 @@
-
-extends 'res://addons/console/console/src/Type/BaseRegexCheckedType.gd'
+class_name BaseRangeConsoleType
+extends BaseRegexCheckedConsoleType
 
 
 # @var  int|float

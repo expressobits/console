@@ -1,6 +1,5 @@
-
 extends RefCounted
-
+class_name ArrayUtils
 
 # @param    Variant  value
 # @returns  Variant[]

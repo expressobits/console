@@ -1,4 +1,4 @@
-
+class_name ConsoleArgument
 extends RefCounted
 
 

@@ -20,8 +20,8 @@
 # IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-extends Node
 class_name GodotLogs
+extends Node
 #Monitor built-in logs
 
 signal error_msg_received(msg:String)

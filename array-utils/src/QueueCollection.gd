@@ -1,6 +1,5 @@
-
-extends './Collection.gd'
-
+extends CollectionUtils
+class_name QueueCollectionUtils
 
 # @var  int
 var _max_length = -1

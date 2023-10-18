@@ -1,5 +1,5 @@
-
-extends 'res://addons/console/console/src/Type/BaseRegexCheckedType.gd'
+class_name Vector2ConsoleType
+extends BaseRegexCheckedConsoleType
 
 
 # @var  Vector2|null
