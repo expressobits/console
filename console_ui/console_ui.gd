@@ -1,7 +1,7 @@
 extends Panel
 class_name ConsoleUI
 
-@onready var Text : ConsoleLogsUI = $Container/ConsoleText
+@onready var Text : ConsoleLogsUI = %ConsoleText
 @onready var Line = $Container/ConsoleLine:
 	set(value): 
 		_set_readonly(value)
