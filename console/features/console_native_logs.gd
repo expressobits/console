@@ -40,7 +40,7 @@ var godot_log : FileAccess
 func _ready():
 	var file_logging_enabled = ProjectSettings.get("debug/file_logging/enable_file_logging") or ProjectSettings.get("debug/file_logging/enable_file_logging.pc")
 	if !file_logging_enabled:
-		push_warning("You have to enable file logging in order to use engine log monitor!")
+		Console.log.info("You have to enable file logging in order to use engine log monitor!")
 		return
 	
 	var log_path = ProjectSettings.get("debug/file_logging/log_path")

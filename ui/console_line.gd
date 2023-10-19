@@ -34,6 +34,7 @@ func _input(e : InputEvent):
 	# Show next line in history
 	if Input.is_action_just_pressed(ConsoleDefaultActions.CONSOLE_HISTORY_UP):
 		self._current_command = Console.history.collection.current()
+		print(self._current_command)
 		Console.history.collection.previous()
 
 		if self._tmp_user_entered_command == null:
@@ -43,9 +44,9 @@ func _input(e : InputEvent):
 	if Input.is_action_just_pressed(ConsoleDefaultActions.CONSOLE_HISTORY_DOWN):
 		self._current_command = Console.history.collection.next()
 
-#		if self._current_command != null and self._tmp_user_entered_command != null:
-#				self._current_command = self._tmp_user_entered_command
-#				self._tmp_user_entered_command = null
+		if self._current_command != null and self._tmp_user_entered_command != null:
+				self._current_command = self._tmp_user_entered_command
+				self._tmp_user_entered_command = null
 
 	# Autocomplete on TAB
 	if Input.is_action_just_pressed(ConsoleDefaultActions.CONSOLE_AUTOCOMPLETE):

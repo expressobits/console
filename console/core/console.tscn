@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw1lfc8rifpwl"]
+[gd_scene load_steps=7 format=3 uid="uid://bw1lfc8rifpwl"]
 
 [ext_resource type="Script" path="res://addons/console/console/core/console.gd" id="1_p6bsx"]
 [ext_resource type="Script" path="res://addons/console/console/features/console_native_logs.gd" id="2_lchu0"]
 [ext_resource type="Script" path="res://addons/console/console/features/console_history.gd" id="3_v3cbe"]
 [ext_resource type="Script" path="res://addons/console/console/features/console_chat.gd" id="4_vyo2c"]
 [ext_resource type="Script" path="res://addons/console/console/features/logger.gd" id="5_6c67j"]
+[ext_resource type="Script" path="res://addons/console/console/features/base_commands.gd" id="6_0oe6c"]
 
 [node name="Console" type="Node" node_paths=PackedStringArray("history", "log")]
 script = ExtResource("1_p6bsx")
@@ -25,3 +26,6 @@ script = ExtResource("3_v3cbe")
 
 [node name="ConsoleChat" type="Node" parent="."]
 script = ExtResource("4_vyo2c")
+
+[node name="BaseCommands" type="Node" parent="."]
+script = ExtResource("6_0oe6c")

@@ -43,9 +43,6 @@ func _ready():
 		" (Godot " + str(v.major) + '.' + str(v.minor) + '.' + str(v.patch) + ' ' + v.status+")\n" + \
 		"Type [color=#ffff66][url=help]help[/url][/color] to get more information about usage")
 
-	# Init base commands
-	BaseCommands.new(self)
-
 
 func _input(e : InputEvent):
 	if not e is InputEventKey:
