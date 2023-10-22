@@ -17,6 +17,7 @@ func _ready():
 
 
 func start():
+	Console.default_command = 'chat'
 	Console.add_command('chat', self, 'send')\
 		.set_description('Send chat message')\
 		.add_argument('message', TYPE_STRING)\
