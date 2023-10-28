@@ -13,6 +13,7 @@ signal raw_input(raw_input : String)
 
 @export var history : ConsoleHistory
 @export var log : Logger
+@export var check_inputs : bool = true
 
 var _command_service
 var _erase_bb_tags_regex : RegEx
@@ -45,6 +46,8 @@ func _ready():
 
 
 func _input(e : InputEvent):
+	if not check_inputs:
+		return
 	if not e is InputEventKey:
 		return
 	if e.is_action_pressed(ConsoleDefaultActions.CONSOLE_TOGGLE):
