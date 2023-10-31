@@ -31,7 +31,7 @@ func bind(argv : Array = []):
 		self._bind_argv.append(_argv)
 
 
-func call(argv = []):
+func call(argv):
 	pass
 
 
