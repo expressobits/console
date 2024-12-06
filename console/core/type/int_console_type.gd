@@ -7,5 +7,5 @@ func _init():
 
 
 func normalize(value) -> int:
-	return value
+	return int(value)
 #	return int(self._reextract(value))
