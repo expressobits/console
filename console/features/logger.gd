@@ -19,12 +19,12 @@ func set_log_level(in_log_level : LogType) -> Logger:
 # ```gdscript
 # Console.log.log("Hello world!", Console.log.TYPE.INFO)
 # ```
-func log(message : String, type = LogType.INFO) -> Logger:
+func log(message, type = LogType.INFO) -> Logger:
 	match type:
-		LogType.DEBUG:   debug(message)
-		LogType.INFO:    info(message)
-		LogType.WARNING: warn(message)
-		LogType.ERROR:   error(message)
+		LogType.DEBUG:   debug(str(message))
+		LogType.INFO:    info(str(message))
+		LogType.WARNING: warn(str(message))
+		LogType.ERROR:   error(str(message))
 	return self
 
 

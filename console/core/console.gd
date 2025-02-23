@@ -12,7 +12,7 @@ signal clear_message
 signal raw_input(raw_input : String)
 
 @export var history : ConsoleHistory
-@export var log : Logger
+@export var logs : Logger
 @export var check_inputs : bool = true
 
 var _command_service
@@ -57,6 +57,10 @@ func _input(e : InputEvent):
 		self.toggle_console()
 	if not is_console_shown and e.is_action_pressed(ConsoleDefaultActions.OPEN_CONSOLE):
 		self.toggle_console()
+
+
+func log(message, type = Logger.LogType.INFO) -> Logger:
+	return logs.log(message, type)
 
 
 func get_command_service():
@@ -110,4 +114,4 @@ func toggle_console():
 
 
 func _set_readonly(value):
-	log.warn('qc/console: _set_readonly: Attempted to set a protected variable, ignoring.')
+	logs.warn('qc/console: _set_readonly: Attempted to set a protected variable, ignoring.')

@@ -24,7 +24,7 @@ func start():
 		.set_arg_type(ConsoleCommand.ArgType.STRING)\
 		.register()
 	if debug_messages:
-		Console.log.info("Start chat service...")
+		Console.log("Start chat service...")
 	is_active = true
 
 
@@ -32,7 +32,7 @@ func stop():
 	Console.default_command = ''
 	Console.remove_command('chat')
 	if debug_messages:
-		Console.log.info("Stop chat service...")
+		Console.log("Stop chat service...")
 	is_active = false
 
 

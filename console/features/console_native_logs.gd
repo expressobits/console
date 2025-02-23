@@ -40,7 +40,7 @@ var godot_log : FileAccess
 func _ready():
 	var file_logging_enabled = ProjectSettings.get("debug/file_logging/enable_file_logging") or ProjectSettings.get("debug/file_logging/enable_file_logging.pc")
 	if !file_logging_enabled:
-		Console.log.info("You have to enable file logging in order to use engine log monitor!")
+		Console.logs.info("You have to enable file logging in order to use engine log monitor!")
 		return
 	
 	var log_path = ProjectSettings.get("debug/file_logging/log_path")
@@ -57,8 +57,8 @@ func _read_data():
 		if new_line.begins_with(IGNORE_PREFIX):
 			continue
 		if new_line.begins_with(ERROR_MSG_PREFIX):
-			Console.log.error(new_line.trim_prefix(ERROR_MSG_PREFIX))
+			Console.logs.error(new_line.trim_prefix(ERROR_MSG_PREFIX))
 		elif new_line.begins_with(WARNING_MSG_PREFIX):
-			Console.log.warn(new_line.trim_prefix(WARNING_MSG_PREFIX))
+			Console.logs.warn(new_line.trim_prefix(WARNING_MSG_PREFIX))
 		else:
-			Console.log.debug(new_line)
+			Console.logs.debug(new_line)

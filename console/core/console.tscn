@@ -7,10 +7,10 @@
 [ext_resource type="Script" path="res://addons/console/console/features/logger.gd" id="5_6c67j"]
 [ext_resource type="Script" path="res://addons/console/console/features/base_commands.gd" id="6_0oe6c"]
 
-[node name="Console" type="Node" node_paths=PackedStringArray("history", "log")]
+[node name="Console" type="Node" node_paths=PackedStringArray("history", "logs")]
 script = ExtResource("1_p6bsx")
 history = NodePath("ConsoleHistory")
-log = NodePath("Logger")
+logs = NodePath("Logger")
 
 [node name="Logger" type="Node" parent="."]
 script = ExtResource("5_6c67j")
