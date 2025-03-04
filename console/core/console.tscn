@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://bw1lfc8rifpwl"]
 
-[ext_resource type="Script" path="res://addons/console/console/core/console.gd" id="1_p6bsx"]
-[ext_resource type="Script" path="res://addons/console/console/features/console_native_logs.gd" id="2_lchu0"]
-[ext_resource type="Script" path="res://addons/console/console/features/console_history.gd" id="3_v3cbe"]
-[ext_resource type="Script" path="res://addons/console/console/features/console_chat.gd" id="4_vyo2c"]
-[ext_resource type="Script" path="res://addons/console/console/features/logger.gd" id="5_6c67j"]
-[ext_resource type="Script" path="res://addons/console/console/features/base_commands.gd" id="6_0oe6c"]
+[ext_resource type="Script" uid="uid://dbkr74y4gjfie" path="res://addons/console/console/core/console.gd" id="1_p6bsx"]
+[ext_resource type="Script" uid="uid://bwi2wpxjb62f4" path="res://addons/console/console/features/console_native_logs.gd" id="2_lchu0"]
+[ext_resource type="Script" uid="uid://ia1befn836jj" path="res://addons/console/console/features/console_history.gd" id="3_v3cbe"]
+[ext_resource type="Script" uid="uid://cte7allv1w3i4" path="res://addons/console/console/features/console_chat.gd" id="4_vyo2c"]
+[ext_resource type="Script" uid="uid://curx1llxuesil" path="res://addons/console/console/features/logger.gd" id="5_6c67j"]
+[ext_resource type="Script" uid="uid://dk73j67mxi831" path="res://addons/console/console/features/base_commands.gd" id="6_0oe6c"]
 
 [node name="Console" type="Node" node_paths=PackedStringArray("history", "logs")]
 script = ExtResource("1_p6bsx")

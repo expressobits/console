@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bereu4nxnwbko"]
 
-[ext_resource type="Script" path="res://addons/console/ui/console_ui.gd" id="1_ydtap"]
-[ext_resource type="Script" path="res://addons/console/ui/console_logs_ui.gd" id="2_la1sp"]
-[ext_resource type="Script" path="res://addons/console/ui/console_line.gd" id="3_jpp4i"]
+[ext_resource type="Script" uid="uid://bwhnqwywv5hgy" path="res://addons/console/ui/console_ui.gd" id="1_ydtap"]
+[ext_resource type="Script" uid="uid://bddbso5jlixah" path="res://addons/console/ui/console_logs_ui.gd" id="2_la1sp"]
+[ext_resource type="Script" uid="uid://73lge0cshq4j" path="res://addons/console/ui/console_line.gd" id="3_jpp4i"]
 
 [sub_resource type="Animation" id="1"]
 length = 0.25
@@ -39,7 +39,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xtuvw"]
 _data = {
-"fade": SubResource("1")
+&"fade": SubResource("1")
 }
 
 [node name="ConsoleUI" type="Panel"]
