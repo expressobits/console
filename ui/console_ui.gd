@@ -27,7 +27,7 @@ func _on_console_toggle_console(is_console_shown : bool):
 		previous_focus_owner = line.get_viewport().gui_get_focus_owner()
 		show()
 		line.clear()
-		line.grab_focus()
+		line.grab_focus.call_deferred()
 		_animation_player.play_backwards('fade')
 	else:
 		line.accept_event() # Prevents from DefaultActions.console_toggle key character getting into previous_focus_owner value
